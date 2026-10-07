@@ -1,0 +1,1235 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="robots" content="noindex,nofollow">
+<style>:root{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0;font:14px/1.4 system-ui,-apple-system,"Segoe UI",sans-serif}img{max-width:100%}[hidden]{display:none!important}</style>
+</head>
+<body>
+<title>Wohnprojekt Augsburg</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=IBM+Plex+Mono:wght@500&family=Public+Sans:wght@400;500;600&display=swap">
+<style>
+/* Layout: one reading column (max 780px). Masthead with a Doppelhaus sketch, tabs, per-item 5-step scales; evaluation as stacked cards. Lech-türkis as the one accent; the rating scale carries its own green→red semantics. */
+:root{
+  --bg:#F1F4EF; --surface:#FFFFFF; --surface-2:#E7ECE5; --ink:#1B2521; --ink-2:#55635C; --line:#D2DAD1;
+  --accent:#13707A; --accent-ink:#FFFFFF; --accent-soft:#D7ECEB;
+  --muss-bg:#1E6A45; --muss-fg:#FFFFFF;
+  --gern-bg:#A3D3B2; --gern-fg:#0F2E1E;
+  --ok-bg:#DCE1DA; --ok-fg:#26302B;
+  --eher-bg:#F2C784; --eher-fg:#3D2A06;
+  --nogo-bg:#BE3F33; --nogo-fg:#FFFFFF;
+  --st-einig:#1E6A45; --st-spannung:#94600A; --st-konflikt:#B23A2F; --st-raus:#66706B; --st-info:#13707A;
+  --f-display:"Bricolage Grotesque","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --f-body:"Public Sans","Segoe UI",system-ui,-apple-system,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#111715; --surface:#19211E; --surface-2:#222C28; --ink:#E4EBE7; --ink-2:#A2AFA9; --line:#34423C;
+    --accent:#56BCC4; --accent-ink:#06191B; --accent-soft:#17373A;
+    --muss-bg:#45A877; --muss-fg:#06170D;
+    --gern-bg:#2A5F44; --gern-fg:#DDF3E5;
+    --ok-bg:#3A4641; --ok-fg:#E4EBE7;
+    --eher-bg:#7C5A18; --eher-fg:#FFEBC6;
+    --nogo-bg:#C4564B; --nogo-fg:#FFFFFF;
+    --st-einig:#62C391; --st-spannung:#E5B256; --st-konflikt:#F0857A; --st-raus:#97A39D; --st-info:#56BCC4;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#111715; --surface:#19211E; --surface-2:#222C28; --ink:#E4EBE7; --ink-2:#A2AFA9; --line:#34423C;
+  --accent:#56BCC4; --accent-ink:#06191B; --accent-soft:#17373A;
+  --muss-bg:#45A877; --muss-fg:#06170D;
+  --gern-bg:#2A5F44; --gern-fg:#DDF3E5;
+  --ok-bg:#3A4641; --ok-fg:#E4EBE7;
+  --eher-bg:#7C5A18; --eher-fg:#FFEBC6;
+  --nogo-bg:#C4564B; --nogo-fg:#FFFFFF;
+  --st-einig:#62C391; --st-spannung:#E5B256; --st-konflikt:#F0857A; --st-raus:#97A39D; --st-info:#56BCC4;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:15px;line-height:1.5;padding-inline:16px;padding-block:0 120px}
+.wrap{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:20px;padding-block:28px 0}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.15}
+h1{font-size:clamp(30px,6vw,44px);font-weight:800;letter-spacing:-.01em}
+h2{font-size:22px;font-weight:700}
+h3{font-size:17px;font-weight:700}
+p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,textarea:focus-visible,summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.muted{color:var(--ink-2)}
+.eyebrow,.label-mono{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:500}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* masthead */
+.mast{display:flex;gap:20px;align-items:flex-end;justify-content:space-between}
+.mast-text{display:flex;flex-direction:column;gap:10px;min-width:0;max-width:60ch}
+.lead{color:var(--ink-2);font-size:16px}
+.mast-art{width:150px;flex:none}
+.mast-art .ground{stroke:var(--ink);stroke-width:2;fill:none}
+.mast-art .lawn{fill:var(--accent-soft);stroke:none}
+.mast-art .house{fill:var(--surface);stroke:var(--ink);stroke-width:2}
+.mast-art .roof{fill:var(--surface-2);stroke:var(--ink);stroke-width:2;stroke-linejoin:round}
+.mast-art .split{stroke:var(--accent);stroke-width:2;stroke-dasharray:3 3}
+.mast-art .door{fill:var(--accent)}
+.mast-art .win{fill:var(--surface-2);stroke:var(--ink);stroke-width:1.5}
+.mast-art .tree{fill:var(--muss-bg)}
+.mast-art .trunk{stroke:var(--ink);stroke-width:2}
+@media (max-width:560px){.mast-art{display:none}}
+
+/* tabs */
+.tabs{display:flex;gap:4px;border-bottom:1px solid var(--line);overflow-x:auto;scrollbar-width:none}
+.tabs button{flex:none}
+.tabs button{background:none;border:0;border-bottom:3px solid transparent;padding:10px 14px;font-weight:600;color:var(--ink-2);margin-bottom:-1px}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+
+.notice{background:var(--accent-soft);border-radius:10px;padding:12px 14px;font-size:14px}
+.notice.warn{background:var(--eher-bg);color:var(--eher-fg)}
+
+/* blocks */
+.block{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;gap:14px}
+.h-small{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-2);font-weight:500}
+
+/* people */
+.households{display:flex;flex-wrap:wrap;gap:16px 28px}
+.hh{display:flex;flex-direction:column;gap:6px;min-width:0}
+.hh-name{font-size:13px;color:var(--ink-2)}
+.hh-row{display:flex;flex-wrap:wrap;gap:8px}
+.pchip{display:inline-flex;align-items:center;gap:8px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:7px 14px;font-weight:600}
+.pchip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.pchip .pstat{font-family:var(--f-mono);font-size:11px;font-weight:500;opacity:.85}
+.pchip.add{background:none;border-style:dashed;color:var(--ink-2);font-weight:500}
+.addp{display:grid;grid-template-columns:1fr 1fr;gap:10px;align-items:end}
+.addp label{display:flex;flex-direction:column;gap:4px;font-size:13px;color:var(--ink-2);min-width:0}
+.addp .actions{grid-column:1/-1;display:flex;gap:8px;flex-wrap:wrap}
+@media (max-width:480px){.addp{grid-template-columns:1fr}}
+input[type=text],textarea{width:100%;font:inherit;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-radius:8px;padding:9px 11px}
+textarea{resize:vertical;min-height:64px}
+.err{color:var(--st-konflikt);font-size:13px}
+
+.btn{background:var(--accent);color:var(--accent-ink);border:0;border-radius:10px;padding:10px 16px;font-weight:600}
+.btn.ghost{background:none;color:var(--ink);border:1px solid var(--line)}
+.btn[disabled]{opacity:.55;cursor:default}
+a.btn{text-decoration:none;display:inline-flex;align-items:center}
+.imp-choose{display:flex;flex-direction:column;gap:8px}
+
+/* legend */
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;color:var(--ink-2);align-items:center}
+.legend .sw{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+
+/* section nav */
+.secnav{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:thin}
+.secnav button{flex:none;background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:8px 12px;display:flex;flex-direction:column;align-items:flex-start;gap:2px;text-align:left}
+.secnav button[aria-current="step"]{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
+.secnav .sn-t{font-weight:600;font-size:14px}
+.secnav .sn-c{font-family:var(--f-mono);font-size:11px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.secnav .sn-c.full{color:var(--st-einig)}
+
+/* questions */
+.sec-head{display:flex;flex-direction:column;gap:6px}
+.sec-intro{color:var(--ink-2);max-width:62ch}
+.qlist{display:flex;flex-direction:column;gap:14px}
+.q{border:0;margin:0;padding:0;min-width:0;display:flex;flex-direction:column;gap:10px}
+.q-card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+.q-label{font-weight:600;font-size:16px;padding:0}
+.tag{font-family:var(--f-mono);font-size:11px;font-weight:500;color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:2px 6px;margin-left:6px;vertical-align:2px;white-space:nowrap}
+.pref-list{display:flex;flex-direction:column}
+.pref-row{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,330px);gap:8px 16px;align-items:center;padding:10px 0;border-top:1px solid var(--line)}
+.pref-row:first-child{border-top:0;padding-top:2px}
+.pref-label{min-width:0}
+.itag{display:block;font-family:var(--f-mono);font-size:11px;color:var(--ink-2);margin-top:2px}
+.q-hint{font-size:13px;color:var(--ink-2);margin-top:-4px}
+@media (max-width:640px){.pref-row{grid-template-columns:minmax(0,1fr)}}
+.seg{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:3px;background:var(--surface-2);border-radius:9px;padding:3px}
+.seg-btn{border:0;background:none;border-radius:7px;padding:7px 2px;font-size:12px;line-height:1.2;min-height:38px;color:var(--ink-2)}
+.seg-btn:hover{background:var(--surface)}
+.seg-btn[aria-checked="true"]{font-weight:600}
+.seg-btn.r-muss[aria-checked="true"]{background:var(--muss-bg);color:var(--muss-fg)}
+.seg-btn.r-gern[aria-checked="true"]{background:var(--gern-bg);color:var(--gern-fg)}
+.seg-btn.r-ok[aria-checked="true"]{background:var(--ok-bg);color:var(--ok-fg);box-shadow:inset 0 0 0 1px var(--ink-2)}
+.seg-btn.r-eher[aria-checked="true"]{background:var(--eher-bg);color:var(--eher-fg)}
+.seg-btn.r-nogo[aria-checked="true"]{background:var(--nogo-bg);color:var(--nogo-fg)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:var(--surface-2);border:1px solid var(--line);border-radius:999px;padding:7px 13px;font-size:14px}
+.chip[aria-checked="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.range{display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;font-size:13px;color:var(--ink-2)}
+.range input{width:100%;accent-color:var(--accent)}
+.range-out{font-family:var(--f-mono);font-size:13px;color:var(--ink);font-variant-numeric:tabular-nums}
+.range-out.unset{color:var(--ink-2)}
+.secfoot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap}
+
+/* bottom bar */
+.bar{position:fixed;left:0;right:0;bottom:0;background:var(--surface);border-top:1px solid var(--line);padding:12px 16px calc(12px + env(safe-area-inset-bottom, 0px))}
+.bar-in{max-width:780px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
+.bar-row{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.bar-prog{display:flex;flex-direction:column;gap:5px;min-width:0;flex:1}
+.bar-txt{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.meter{height:6px;background:var(--surface-2);border-radius:99px;overflow:hidden;max-width:320px}
+.meter i{display:block;height:100%;background:var(--accent);border-radius:99px;transition:width .2s}
+.confirm{display:flex;flex-direction:column;gap:10px;font-size:14px}
+.confirm .row{display:flex;gap:8px;flex-wrap:wrap}
+
+/* export */
+.mono-box{font-family:var(--f-mono);font-size:12px}
+
+/* evaluation */
+.strip{display:flex;flex-wrap:wrap;gap:8px}
+.st-chip{display:inline-flex;gap:6px;align-items:center;font-size:13px;border:1px solid var(--line);border-radius:999px;padding:4px 10px;background:var(--surface)}
+.st-chip.done{border-color:var(--st-einig);color:var(--st-einig)}
+.locked{display:flex;flex-direction:column;gap:12px;align-items:flex-start}
+.locked .big{font-family:var(--f-display);font-size:34px;font-weight:800;font-variant-numeric:tabular-nums}
+.counts{display:flex;flex-wrap:wrap;gap:8px}
+.pill{display:inline-flex;align-items:center;gap:6px;font-family:var(--f-mono);font-size:11px;font-weight:500;letter-spacing:.03em;text-transform:uppercase;border:1px solid currentColor;border-radius:999px;padding:2px 8px;white-space:nowrap}
+.pill b{font-variant-numeric:tabular-nums}
+.st-einig{color:var(--st-einig)} .st-spannung{color:var(--st-spannung)} .st-konflikt{color:var(--st-konflikt)}
+.st-raus{color:var(--st-raus)} .st-achtung{color:var(--st-spannung)} .st-verschieden,.st-offen{color:var(--st-info)}
+.er{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:6px 12px;padding:10px 0;border-top:1px solid var(--line);align-items:start}
+.er:first-child{border-top:0}
+.er-label{min-width:0;font-weight:500}
+.er-label small{display:block;color:var(--ink-2);font-weight:400;font-size:12px}
+.er-body{grid-column:1/-1;display:flex;flex-wrap:wrap;gap:6px}
+.pc{display:inline-flex;align-items:center;gap:5px;border-radius:6px;padding:3px 8px;font-size:12px;font-weight:600;max-width:100%}
+.pc.r-muss{background:var(--muss-bg);color:var(--muss-fg)}
+.pc.r-gern{background:var(--gern-bg);color:var(--gern-fg)}
+.pc.r-ok{background:var(--ok-bg);color:var(--ok-fg)}
+.pc.r-eher{background:var(--eher-bg);color:var(--eher-fg)}
+.pc.r-nogo{background:var(--nogo-bg);color:var(--nogo-fg)}
+.pc .pc-v{font-weight:400;opacity:.9}
+.cv{display:inline-flex;gap:6px;font-size:13px;background:var(--surface-2);border-radius:6px;padding:3px 8px;max-width:100%}
+.cv b{font-weight:600}
+.hh-group{display:flex;flex-direction:column;gap:4px;grid-column:1/-1}
+.hh-group .hh-name{font-size:12px}
+.quote{grid-column:1/-1;border-left:3px solid var(--accent);padding:2px 0 2px 10px;font-size:14px;white-space:pre-wrap;overflow-wrap:anywhere}
+.quote b{display:block;font-size:12px;color:var(--ink-2);font-weight:600}
+.profile dl{display:grid;grid-template-columns:minmax(0,190px) minmax(0,1fr);gap:8px 16px;margin:0}
+.profile dt{font-size:13px;color:var(--ink-2)}
+.profile dd{margin:0;min-width:0}
+@media (max-width:560px){.profile dl{grid-template-columns:minmax(0,1fr)} .profile dd{margin-bottom:6px}}
+details.dsec{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:4px 18px}
+details.dsec>summary{cursor:pointer;padding:12px 0;display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;list-style:none}
+details.dsec>summary::-webkit-details-marker{display:none}
+details.dsec>summary h3::before{content:"▸ ";color:var(--accent)}
+details.dsec[open]>summary h3::before{content:"▾ "}
+.dsec-body{padding-bottom:14px;display:flex;flex-direction:column;gap:16px}
+.dq-title{font-family:var(--f-mono);font-size:12px;letter-spacing:.05em;text-transform:uppercase;color:var(--ink-2);margin-bottom:2px}
+.demo-banner{background:var(--eher-bg);color:var(--eher-fg);border-radius:10px;padding:10px 14px;display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap;font-size:14px}
+.demo-banner .btn{background:var(--eher-fg);color:var(--eher-bg)}
+.import{font-size:14px}
+.import summary{cursor:pointer;color:var(--ink-2)}
+.import .inner{display:flex;flex-direction:column;gap:8px;padding-top:10px}
+.small{font-size:13px}
+.modebar{display:flex;flex-direction:column;gap:8px}
+.switch{display:inline-flex;align-items:center;gap:10px;background:none;border:0;padding:0;font-weight:600;text-align:left;align-self:flex-start}
+.sw-track{width:38px;height:22px;border-radius:99px;background:var(--surface-2);border:1px solid var(--line);position:relative;flex:none;transition:background .15s}
+.sw-knob{position:absolute;top:2px;left:2px;width:16px;height:16px;border-radius:50%;background:var(--ink-2);transition:transform .15s}
+.switch[aria-pressed="true"] .sw-track{background:var(--accent);border-color:var(--accent)}
+.switch[aria-pressed="true"] .sw-knob{transform:translateX(16px);background:var(--accent-ink)}
+.linkbtn{background:none;border:0;padding:0;color:var(--accent);font-weight:600;text-decoration:underline;text-underline-offset:2px}
+.addp .full{grid-column:1/-1}
+.props{display:flex;flex-direction:column;gap:14px}
+.prop{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.prop-head{display:flex;justify-content:space-between;gap:8px 12px;flex-wrap:wrap;align-items:center}
+.prop-meta{font-size:13px;color:var(--ink-2)}
+.prop-why{white-space:pre-wrap;overflow-wrap:anywhere}
+.seg3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:3px;background:var(--surface-2);border-radius:9px;padding:3px;max-width:440px}
+.seg3 .seg-btn[disabled]{cursor:default;opacity:.6}
+.seg3 .seg-btn.v-gern[aria-checked="true"]{background:var(--gern-bg);color:var(--gern-fg)}
+.seg3 .seg-btn.v-ok[aria-checked="true"]{background:var(--ok-bg);color:var(--ok-fg);box-shadow:inset 0 0 0 1px var(--ink-2)}
+.seg3 .seg-btn.v-reden[aria-checked="true"]{background:var(--eher-bg);color:var(--eher-fg)}
+.tally{font-size:13px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.prop-actions{display:flex;gap:8px;flex-wrap:wrap}
+.btn.small{padding:7px 12px;font-size:14px}
+.prop.done{background:var(--bg)}
+.empty-props{color:var(--ink-2);border:1px dashed var(--line);border-radius:14px;padding:16px}
+@media (prefers-reduced-motion: reduce){*{transition:none!important}}
+</style>
+
+<div class="wrap">
+  <header class="mast">
+    <div class="mast-text">
+      <p class="eyebrow">Wohnprojekt · Augsburg</p>
+      <h1>Wie wollen wir wohnen?</h1>
+      <p class="lead">Jede und jeder füllt für sich aus, verdeckt. Wenn alle abgegeben haben, deckt ihr gemeinsam auf und seht, wo ihr euch einig seid, wo es hakt und welches Suchprofil sich daraus ergibt.</p>
+    </div>
+    <svg class="mast-art" viewBox="0 0 160 100" aria-hidden="true">
+      <path class="lawn" d="M8 88 Q80 76 152 88 Z"/>
+      <rect class="house" x="34" y="44" width="76" height="44"/>
+      <path class="roof" d="M27 46 L72 15 L117 46 Z"/>
+      <path class="split" d="M72 18 V88"/>
+      <rect class="door" x="45" y="66" width="11" height="22"/>
+      <rect class="door" x="88" y="66" width="11" height="22"/>
+      <rect class="win" x="58" y="53" width="9" height="9"/>
+      <rect class="win" x="77" y="53" width="9" height="9"/>
+      <circle class="tree" cx="135" cy="60" r="13"/>
+      <path class="trunk" d="M135 73 V88"/>
+      <path class="ground" d="M4 88 H156"/>
+    </svg>
+  </header>
+
+  <div class="tabs" role="tablist">
+    <button type="button" role="tab" id="tab-fill" aria-selected="true" data-action="view" data-view="fill">Ausfüllen</button>
+    <button type="button" role="tab" id="tab-leute" aria-selected="false" data-action="view" data-view="leute">Weitere Leute</button>
+    <button type="button" role="tab" id="tab-eval" aria-selected="false" data-action="view" data-view="eval">Auswertung</button>
+  </div>
+
+  <div id="notice" class="notice" hidden></div>
+
+  <section id="view-fill" aria-labelledby="tab-fill" style="display:flex;flex-direction:column;gap:20px">
+    <div class="block">
+      <h2 class="h-small">Wer füllt aus?</h2>
+      <div id="people"><p class="muted">Lade Teilnehmende …</p></div>
+      <div id="add-person" class="addp" hidden>
+        <label>Name<input type="text" id="np-name" maxlength="30" autocomplete="off"></label>
+        <label>Haushalt<input type="text" id="np-hh" maxlength="40" list="hh-list" placeholder="z. B. Jonas & Jojo" autocomplete="off"></label>
+        <datalist id="hh-list"></datalist>
+        <div class="actions">
+          <button type="button" class="btn" data-action="add-save">Hinzufügen</button>
+          <button type="button" class="btn ghost" data-action="add-cancel">Abbrechen</button>
+        </div>
+        <p id="np-err" class="err" hidden></p>
+      </div>
+    </div>
+
+    <div id="fill-empty" class="muted">Wähle oder trag oben deinen Namen ein, dann geht es los. Komplett dauert es etwa 15 bis 20 Minuten, die Kurzversion 5 bis 10. Du kannst jederzeit aufhören, alles wird laufend gespeichert.</div>
+
+    <div id="export" class="block" hidden>
+      <h3>Fast fertig: Antworten an Jonas schicken</h3>
+      <p class="muted">Schick Jonas den Text unten per WhatsApp, er fügt ihn in der Auswertung ein. Änderst du später noch etwas, tippst du einfach nochmal auf „Abgeben“ und schickst den neuen Text.</p>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <a class="btn" id="export-wa" href="https://wa.me/" target="_blank" rel="noopener">In WhatsApp teilen</a>
+        <button type="button" class="btn ghost" data-action="copy-export">Text kopieren</button>
+        <span id="export-msg" class="muted"></span>
+      </div>
+      <textarea id="export-text" class="mono-box" rows="4" readonly></textarea>
+    </div>
+
+    <div id="fill-body" style="display:flex;flex-direction:column;gap:18px" hidden>
+      <div class="legend" aria-label="Skala">
+        <span><span class="sw" style="background:var(--muss-bg)"></span>Muss sein</span>
+        <span><span class="sw" style="background:var(--gern-bg)"></span>Würde präferieren</span>
+        <span><span class="sw" style="background:var(--ok-bg)"></span>Wäre ok</span>
+        <span><span class="sw" style="background:var(--eher-bg)"></span>Lieber nicht</span>
+        <span><span class="sw" style="background:var(--nogo-bg)"></span>No-Go</span>
+      </div>
+      <div class="modebar">
+        <button type="button" class="switch" id="btn-core" data-action="core" aria-pressed="false"><span class="sw-track"><span class="sw-knob"></span></span><span>Kurzversion: nur die wichtigsten Fragen</span></button>
+        <p class="muted small">Du musst nicht alles auf einmal machen. Alles wird automatisch gespeichert, du kannst jederzeit aufhören und später weitermachen. Abgeben geht auch mit Lücken, offene Fragen zählen einfach nicht mit. Was du nicht beantworten willst, lässt du leer.</p>
+      </div>
+      <nav id="secnav" class="secnav" aria-label="Abschnitte"></nav>
+      <div id="section" style="display:flex;flex-direction:column;gap:16px"></div>
+      <div class="secfoot">
+        <button type="button" class="btn ghost" data-action="prev" id="btn-prev">Zurück</button>
+        <button type="button" class="btn" data-action="next" id="btn-next">Weiter</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="view-leute" aria-labelledby="tab-leute" style="display:flex;flex-direction:column;gap:20px" hidden>
+    <div class="block">
+      <h2>Weitere Leute</h2>
+      <p class="muted">Wen könntet ihr euch noch im Projekt vorstellen? Alle können Leute vorschlagen, alle geben ein erstes Stimmungsbild ab. Das Ergebnis erscheint erst, wenn alle abgestimmt haben, und nur als Anzahl, ohne Namen.</p>
+      <p class="muted small">Wer „Erst reden“ wählt, muss das hier nicht begründen. So etwas klärt man besser persönlich als in einem Kommentar. Aufnehmen lässt sich jemand erst, wenn alle mit „Gern dabei“ oder „Wäre ok“ gestimmt haben.</p>
+      <div id="leute-me"></div>
+      <div id="prop-form" class="addp" hidden>
+        <label class="full">Name oder Namen<input type="text" id="pp-name" maxlength="60" placeholder="z. B. Lena & Tim" autocomplete="off"></label>
+        <label class="full">Wer ist das, und warum würde es passen?<textarea id="pp-why" rows="2" maxlength="600"></textarea></label>
+        <div class="actions"><button type="button" class="btn" data-action="prop-add">Vorschlagen</button></div>
+        <p id="pp-err" class="err" hidden></p>
+      </div>
+    </div>
+    <div id="props" class="props"></div>
+  </section>
+
+  <section id="view-eval" aria-labelledby="tab-eval" style="display:flex;flex-direction:column;gap:20px" hidden>
+    <div id="eval"><p class="muted">Lade …</p></div>
+    <div class="block" id="import" hidden>
+      <h2 class="h-small">Antworten aus WhatsApp einfügen</h2>
+      <p class="muted small">Wer ohne Konto ausfüllt, schickt dir eine Nachricht mit „WOHNPROJEKT-ANTWORTEN“. Ganze Nachricht kopieren, hier einfügen, fertig. Vorschläge für weitere Leute kommen automatisch mit. Eine neuere Nachricht derselben Person ersetzt die alte.</p>
+      <textarea id="imp-text" class="mono-box" rows="3" placeholder="Meine Antworten für den Wohnprojekt-Fragebogen: WOHNPROJEKT-ANTWORTEN v2 …"></textarea>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button type="button" class="btn" data-action="import">Einfügen</button>
+        <span id="imp-msg" class="muted"></span>
+      </div>
+      <div id="imp-choose" class="imp-choose" hidden></div>
+    </div>
+  </section>
+</div>
+
+<div id="bar" class="bar" hidden>
+  <div class="bar-in">
+    <div id="bar-confirm" class="confirm" hidden></div>
+    <div class="bar-row">
+      <div class="bar-prog">
+        <span id="bar-txt" class="bar-txt"></span>
+        <div class="meter"><i id="bar-meter" style="width:0%"></i></div>
+      </div>
+      <button type="button" class="btn" id="btn-submit" data-action="submit-ask">Abgeben</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+'use strict';
+
+/* ---------- Fragen ---------- */
+const SCALE=[
+  {k:'muss',v:2,label:'Muss sein',short:'Muss'},
+  {k:'gern',v:1,label:'Würde präferieren',short:'Präferiere'},
+  {k:'ok',v:0,label:'Wäre ok',short:'Wäre ok'},
+  {k:'eher',v:-1,label:'Lieber nicht',short:'Lieber nicht'},
+  {k:'nogo',v:-2,label:'No-Go',short:'No-Go'}
+];
+const SC=Object.fromEntries(SCALE.map(s=>[s.k,s]));
+const MONEY=['bis 1.500 €','1.500–2.000 €','2.000–2.500 €','2.500–3.000 €','3.000–3.500 €','über 3.500 €'];
+
+const SECTIONS=[
+ {id:'wohnform',title:'Wohnform',intro:'Welche Art von Haus und welches Modell kannst du dir vorstellen?',q:[
+  {t:'P',id:'form',label:'Wohnform',items:[['dhh','Doppelhaushälften nebeneinander'],['rh','Reihenhäuser nebeneinander'],['zfh','Zweifamilienhaus mit getrennten Wohnungen'],['mfh','Kleines Mehrfamilienhaus (3–4 Einheiten)'],['neubau','Zwei Wohnungen im selben Neubauprojekt'],['baugem','Baugemeinschaft: gemeinsam neu bauen'],['umbau','Großes Haus kaufen und in Wohnungen umbauen']]},
+  {t:'P',id:'extra',label:'Falls das Haus mehr Wohnungen hat, als wir brauchen',hint:'Zum Beispiel ein Dreifamilienhaus, in dem ihr zwei Wohnungen selbst nutzt.',items:[['freunde','Erst im Freundes- oder Familienkreis fragen'],['extern','An Fremde vermieten, die Miete hilft beim Kredit'],['eltern','Für Eltern freihalten oder als Gästewohnung nutzen'],['spaeter','Erst vermieten, später selbst nutzen'],['nein','Lieber nur Häuser mit genau so vielen Wohnungen, wie wir brauchen']]},
+  {t:'P',id:'modell',label:'Kaufen oder mieten: wer macht was?',hint:'„Wir“ ist dein Haushalt, „die anderen“ der andere Haushalt. Bewerte jede Variante, auch wenn sie für euch nur theoretisch infrage kommt. Die Auswertung gleicht dann über Kreuz ab, welche Kombination für beide Seiten passt.',items:[
+   ['kauf','Jeder Haushalt kauft seine eigene Einheit'],
+   ['wirkaufen','Wir kaufen, die anderen mieten bei uns'],
+   ['wirkaufenopt','Wir kaufen, die anderen mieten erst und kaufen uns ihre Einheit später ab'],
+   ['wirmieten','Die anderen kaufen, wir mieten bei ihnen'],
+   ['wirmietenopt','Die anderen kaufen, wir mieten erst und kaufen ihnen unsere Einheit später ab'],
+   ['miete','Beide Haushalte mieten nebeneinander'],
+   ['geno','Genossenschaft'],
+   ['probe','Erst 1–2 Jahre nebeneinander mieten, dann kaufen']]},
+  {t:'P',id:'zustand',label:'Zustand des Hauses',items:[['neu','Neubau oder Erstbezug'],['bezug','Bestand, bezugsfertig'],['reno','Bestand mit Renovierung'],['kern','Kernsanierung']]},
+  {t:'P',id:'energie',label:'Heizung und Energiezustand',hint:'Was wäre für dich beim Kauf noch akzeptabel?',items:[['wp','Wärmepumpe oder Fernwärme schon vorhanden'],['gas','Gasheizung, Tausch in einigen Jahren fällig'],['oel','Ölheizung, Tausch bald nötig'],['unsaniert','Unsaniert, schlechte Energieklasse (F bis H)']]},
+  {t:'C',id:'renozeit',ord:true,label:'Wie lange dürfte eine Renovierung vor dem Einzug dauern?',opts:['Gar nicht, muss bezugsfertig sein','Bis 3 Monate','3–6 Monate','6–12 Monate','Länger wäre auch ok']},
+  {t:'C',id:'renolust',ord:true,label:'Wie viel Lust hast du, beim Renovieren selbst anzupacken?',opts:['Keine, das sollen Profis machen','Ein bisschen (Streichen, Möbel)','Einiges (Böden, Garten, Abriss mit Anleitung)','Richtig Bock, auch auf große Projekte']},
+  {t:'C',id:'renostunden',ord:true,label:'Wie viel Zeit hättest du in einer Renovierungsphase realistisch?',opts:['Kaum, Dienste und Alltag reichen schon','Ein paar Stunden pro Woche','Einen Tag am Wochenende','Mehrere Tage, auch Urlaub dafür']},
+  {t:'M',id:'flaeche',scope:'h',tag:'Nur eure Einheit',label:'Wohnfläche für eure eigene Wohneinheit, mit den geplanten Kindern',hint:'Ohne den anderen Haushalt. Kreuz alles an, womit du einverstanden wärst.',opts:['unter 90 m²','90–120 m²','120–150 m²','150–180 m²','über 180 m²']},
+  {t:'M',id:'zimmer',scope:'h',tag:'Nur eure Einheit',label:'Zimmer in eurer eigenen Wohneinheit',hint:'Kreuz alles an, womit du einverstanden wärst.',opts:['3','4','5','6 oder mehr']},
+  {t:'M',id:'gartengr',scope:'h',tag:'Nur eure Einheit',label:'Eigener Gartenanteil für eure Einheit',hint:'Zusätzlich zu einem eventuell gemeinsamen Garten. Kreuz alles an, womit du einverstanden wärst.',opts:['Brauchen wir nicht','Terrasse reicht','Mittel, etwa 100–200 m²','Groß, über 200 m²']}
+ ]},
+ {id:'miteinander',title:'Miteinander',intro:'Wie nah wollt ihr euch im Alltag sein, und was wird geteilt?',q:[
+  {t:'P',id:'naehe',label:'Wie viel Nähe im Alltag?',hint:'Bewerte jede Form des Zusammenlebens einzeln.',items:[['gruss','Eigenständig: man grüßt sich und hilft, wenn nötig'],['spontan','Spontan zusammen, wenn es sich ergibt'],['wochenende','Ab und zu am Wochenende zusammen, z. B. Grillen'],['abend','Fester gemeinsamer Abend pro Woche'],['essen','Mehrmals pro Woche gemeinsam essen'],['offen','Offene Türen, man geht ohne Anmeldung rüber'],['urlaub','Auch mal gemeinsam in den Urlaub']]},
+  {t:'P',id:'teilen',label:'Räume und Flächen teilen',items:[['garten','Garten komplett gemeinsam'],['gartenmix','Garten teils gemeinsam, teils privat'],['feuer','Feuerstelle, Grill oder Outdoor-Küche'],['beete','Gemüsebeete, Obstbäume, vielleicht Hühner'],['spiel','Spielecke im Garten (Sandkasten, Schaukel, Trampolin)'],['werkstatt','Werkstatt oder Hobbyraum'],['raum','Gemeinschaftsraum oder große Küche für Feste'],['gast','Gästezimmer'],['buero','Arbeitszimmer oder Homeoffice-Raum'],['sauna','Sauna'],['fitness','Fitness- oder Sportraum'],['wasch','Waschküche']]},
+  {t:'P',id:'dinge',label:'Dinge und Alltag teilen',items:[['auto','Ein Auto teilen'],['lastenrad','Lastenrad'],['werkzeug','Werkzeug und Gartengeräte'],['pv','Photovoltaik, Stromspeicher und Wallbox'],['hilfe','Putzhilfe oder Gärtner gemeinsam beauftragen'],['alltag','Pakete annehmen, Blumen gießen, Haustier hüten'],['essen','Ab und zu füreinander mitkochen']]},
+  {t:'P',id:'kinder',label:'Falls Kinder kommen: was würdest du gern so machen?',hint:'Rein theoretisch, auch wenn noch niemand Kinder hat. Jeder Haushalt hat seine eigene Wohnung.',items:[['aufpassen','Spontan gegenseitig aufpassen, z. B. bei Diensten oder Terminen'],['bringen','Kita bringen und abholen abwechseln'],['offen','Die Kinder dürfen einfach rüberlaufen'],['regeln','Grobe gemeinsame Regeln, wenn die Kinder zusammen sind (Süßes, Bildschirm)']]},
+  {t:'P',id:'tiere',label:'Haustiere im Haus',items:[['hund','Hund'],['katze','Katze']]},
+  {t:'P',id:'eltern',label:'Eltern im Projekt',items:[['elw','Eigene Wohnung für Eltern im Haus'],['ort','Eltern in eigener Wohnung im selben Ort'],['andere','Eltern der anderen Familie mit im Haus']]},
+  {t:'P',id:'erweitern',label:'Weitere Leute',items:[['dritte','Drei Parteien von Anfang an'],['vierte','Vier Parteien von Anfang an'],['spaeter','Später auf drei oder vier Parteien erweitern'],['zwei','Bei zwei Parteien bleiben']]}
+ ]},
+ {id:'lage',title:'Lage & Wege',intro:'Wo arbeitet ihr, wie wollt ihr hinkommen, und welche Orte kommen infrage?',q:[
+  {t:'T',id:'arbeitsort',label:'Wo arbeitest du, und ab wann vielleicht woanders?',ph:'z. B. Klinik in der Stadt, ab 2027 anderer Standort'},
+  {t:'P',id:'verkehr',label:'Womit wärst du ok, zur Arbeit zu kommen?',hint:'Bewerte jedes Verkehrsmittel für deinen künftigen Arbeitsweg.',items:[['rad','Fahrrad oder E-Bike'],['tram','Tram'],['zug','Regionalbahn'],['bus','Bus'],['auto','Auto']]},
+  {t:'C',id:'pendel',ord:true,label:'Wie lange darf dein Arbeitsweg höchstens dauern?',hint:'Einfache Strecke, als Obergrenze, nicht deine heutige Pendelzeit.',opts:['15 min','20 min','30 min','45 min','60 min']},
+  {t:'P',id:'ort',label:'Orte',hint:'Die Öffi-Angabe unter jedem Ort zeigt, was es dort heute gibt (Stand 2025/26). Fehlt ein Ort, schreib ihn unten ins Textfeld.',items:[
+   ['innen','Augsburg innenstadtnah (Antons-, Bismarck-, Thelottviertel)','Tram'],
+   ['pfersee','Pfersee','Tram'],
+   ['kriegshaber','Kriegshaber','Tram'],
+   ['goeggingen','Göggingen','Tram'],
+   ['haunstetten','Haunstetten / Univiertel','Tram'],
+   ['hochzoll','Hochzoll','Tram'],
+   ['lechhausen','Lechhausen','Tram'],
+   ['inningen','Inningen','Regionalbahn'],
+   ['bergheim','Bergheim','Bus'],
+   ['stadtbergen','Stadtbergen','Tram'],
+   ['leitershofen','Leitershofen / Deuringen','Bus'],
+   ['neusaess','Neusäß / Westheim','Regionalbahn Richtung Ulm · Uniklinik und BKH mit dem Rad nah · Tram nur in Planung'],
+   ['diedorf','Diedorf / Gessertshausen','Regionalbahn Richtung Ulm'],
+   ['gersthofen','Gersthofen','Regionalbahn · Tram nur in Planung'],
+   ['friedberg','Friedberg','Tram und Regionalbahn'],
+   ['koenigsbrunn','Königsbrunn','Tram'],
+   ['bobingen','Bobingen','Regionalbahn']]},
+  {t:'P',id:'oepnv',label:'Mit Öffis oder Rad in die Stadt',items:[['tram','Tram zu Fuß erreichbar'],['bahn','Bahnhof mit Regionalzug zu Fuß erreichbar'],['bus','Nur Bus in die Stadt'],['rad','In 20–30 min mit dem Rad in der Stadt']]},
+  {t:'C',id:'ulm',ord:true,label:'Wie wichtig ist dir eine gute Verbindung Richtung Ulm?',opts:['Unwichtig','Schön wäre es','Wichtig','Sehr wichtig']},
+  {t:'P',id:'umgebung',label:'In der Umgebung',items:[['gruen','Feld, Wald oder Park zu Fuß'],['kita','Kita und Grundschule zu Fuß'],['einkauf','Supermarkt zu Fuß'],['spielplatz','Spielplatz in der Nähe'],['ruhig','Ruhige Straße, wenig Durchgangsverkehr']]},
+  {t:'T',id:'orte',label:'Weitere Orte, die dich reizen, und Orte, die nicht gehen',ph:'Reizt mich: … / Geht nicht: …'}
+ ]},
+ {id:'leben',title:'Lebensplanung',intro:'Was in den nächsten Jahren passiert, entscheidet, ob das Haus passt und ob die Finanzierung hält.',q:[
+  {t:'C',id:'kinderwunsch',label:'Kinderwunsch',opts:['Kinder schon da','In 0–2 Jahren','In 2–5 Jahren','Später','Unsicher','Eher nicht']},
+  {t:'C',id:'kinderzahl',label:'Wie viele Kinder ungefähr?',opts:['1','2','3 oder mehr','Offen']},
+  {t:'C',id:'elternzeit',ord:true,label:'Elternzeit oder Teilzeit, die du für dich einplanst',opts:['Keine','Bis 6 Monate','6–12 Monate','1–2 Jahre','Längere Teilzeit']},
+  {t:'R',id:'sicher',label:'Wie sicher bist du, in 10 Jahren noch im Raum Augsburg zu arbeiten?',left:'0 %',right:'100 %',warn:60},
+  {t:'C',id:'dauer',ord:true,label:'Wie lange willst du mindestens dort wohnen?',opts:['Unter 5 Jahre','5–10 Jahre','10–20 Jahre','Für immer']},
+  {t:'T',id:'plaene',label:'Berufliche Pläne, die den Wohnort beeinflussen könnten',ph:'Facharzt, Stellenwechsel, Promotion, Ausland …'}
+ ]},
+ {id:'zeitplan',title:'Zeitplan & Suche',intro:'Wann soll es losgehen, und wie viel Zeit steckst du in die Suche?',q:[
+  {t:'C',id:'start',ord:true,label:'Ab wann würdest du ernsthaft suchen?',opts:['Sofort','In den nächsten 6 Monaten','In 6–12 Monaten','In 1–2 Jahren','Später']},
+  {t:'M',id:'einzug',label:'Welche Einzugszeitpunkte wären für dich ok?',hint:'Kreuz alles an, was passen würde. Wenn es bis spätestens Ende 2028 sein muss, kreuzt du nur die ersten beiden an.',opts:['Bis Ende 2027','Im Laufe von 2028','Im Laufe von 2029','2030 oder später']},
+  {t:'C',id:'besichtigung',ord:true,label:'Wie oft würdest du zu Besichtigungen gehen?',opts:['Nur bei sehr guten Treffern','Etwa einmal im Monat','Zwei- bis dreimal im Monat','Jede Woche, wenn es sein muss']},
+  {t:'P',id:'besichtwer',label:'Wer geht zu Besichtigungen?',items:[['alle','Möglichst immer alle vier'],['prohh','Mindestens eine Person pro Haushalt'],['vorab','Eine Person schaut vor, die anderen kommen zum zweiten Termin'],['video','Per Videocall dazuschalten ist ok']]}
+ ]},
+ {id:'geld',title:'Finanzen',intro:'Fragen für euren Haushalt. Partner dürfen unterschiedlich antworten, das ist aufschlussreich. Bandbreiten statt genauer Zahlen; sichtbar erst nach dem Aufdecken.',q:[
+  {t:'C',id:'ek',scope:'h',tag:'Euer Haushalt',ord:true,label:'Eigenkapital, das euer Haushalt heute dafür locker machen könnte',hint:'Inklusive Depot und Ersparnissen, aber ohne Notgroschen.',opts:['unter 25.000 €','25–50.000 €','50–100.000 €','100–200.000 €','200–400.000 €','über 400.000 €']},
+  {t:'C',id:'ek5',scope:'h',tag:'Euer Haushalt',ord:true,label:'… und in etwa 5 Jahren, geschätzt',opts:['unter 25.000 €','25–50.000 €','50–100.000 €','100–200.000 €','200–400.000 €','über 400.000 €']},
+  {t:'C',id:'einsatz',ord:true,label:'Wie viel davon würdest du am liebsten einsetzen?',hint:'Deine Präferenz, nicht was maximal ginge.',opts:['Möglichst nichts, das Geld bleibt angelegt','Nur die Kaufnebenkosten (etwa 8–9 % vom Kaufpreis)','Etwa die Hälfte','So viel, dass die Konditionen deutlich besser werden','Alles, was sinnvoll ist']},
+  {t:'C',id:'rate',scope:'h',tag:'Euer Haushalt',ord:true,label:'Monatliche Wohnkosten eures Haushalts: Wohlfühlwert',opts:MONEY},
+  {t:'C',id:'grenze',scope:'h',tag:'Euer Haushalt',ord:true,label:'Monatliche Wohnkosten eures Haushalts: Schmerzgrenze',opts:MONEY},
+  {t:'C',id:'kredit',scope:'h',tag:'Euer Haushalt',ord:true,label:'Kreditsumme, die euer Haushalt höchstens tragen würde',hint:'Zur Einordnung (Stand Oktober 2026): Bauzins etwa 4,1 % bei 10 Jahren Zinsbindung, mit wenig Eigenkapital eher etwas mehr. Bei 2 % Tilgung kosten 100.000 € Kredit rund 510 € im Monat und sind nach gut 27 Jahren abbezahlt, das sind bei gleichem Zins rund 66.000 € Zinsen. Mit 3 % Tilgung: rund 590 € im Monat, 21 Jahre, rund 49.000 € Zinsen. Die Monatsraten unten gelten für 2 % Tilgung.',opts:['Gar kein Kredit','bis 300.000 € (bis ca. 1.530 €/Monat)','300–450.000 € (ca. 1.530–2.290 €/Monat)','450–600.000 € (ca. 2.290–3.050 €/Monat)','600–750.000 € (ca. 3.050–3.810 €/Monat)','über 750.000 € (über 3.810 €/Monat)']},
+  {t:'P',id:'konstrukt',label:'Finanzielle Konstruktion',items:[['getrennt','Getrennte Kredite pro Haushalt'],['gemeinsam','Ein gemeinsamer Kredit für alles'],['anteile','Anteile je nach eingebrachtem Geld'],['ruecklage','Gemeinsame Rücklage für Haus und Garten']]}
+ ]},
+ {id:'regeln',title:'Spielregeln',intro:'Das sind die Punkte, die später in Teilungserklärung, Gemeinschaftsordnung oder Mietvertrag landen.',q:[
+  {t:'P',id:'entscheid',label:'Entscheidungen',items:[['einstimmig','Große Ausgaben nur einstimmig'],['mehrheit','Mehrheit reicht, sobald es drei oder mehr Parteien sind'],['runde','Feste Hausrunde, etwa einmal im Monat']]},
+  {t:'P',id:'ausstieg',label:'Wenn jemand aussteigt',items:[['vorkauf','Vorkaufsrecht für die anderen'],['zustimmung','Neue Mitbewohner nur mit Zustimmung aller'],['gutachten','Preis per unabhängigem Gutachten'],['halte','Mindestdauer, z. B. 5 Jahre kein Verkauf']]},
+  {t:'C',id:'trennung',label:'Wenn sich ein Paar trennt …',opts:['Wer bleibt, übernimmt den Anteil','Die Einheit wird verkauft, die anderen haben Vorkaufsrecht','Müssen wir gemeinsam klären']},
+  {t:'T',id:'ausstiegsgrund',label:'Was wäre für dich ein Grund auszusteigen?'},
+  {t:'T',id:'sorge',label:'Was ist deine größte Sorge?'},
+  {t:'T',id:'wichtig',label:'Was ist dir am allerwichtigsten?'}
+ ]}
+];
+const QMAP={};
+SECTIONS.forEach((s,si)=>s.q.forEach(q=>{q.sec=s;q.si=si;if(q.items)q.items=q.items.map(([id,label,tag])=>({id,label,tag}));QMAP[q.id]=q;}));
+['form','modell','renolust','flaeche','naehe','erweitern','verkehr','pendel','ort','oepnv','kinderwunsch','sicher','start','ek','einsatz','grenze','kredit','trennung','wichtig'].forEach(id=>{QMAP[id].core=true;});
+const visQ=s=>S.coreOnly?s.q.filter(q=>q.core):s.q;
+const pk=(q,it)=>q.id+'__'+it.id;
+const intersect=arrs=>arrs.length?arrs.reduce((a,b)=>a.filter(x=>b.includes(x))):[];
+const tagH=q=>q.tag?`<span class="tag">${esc(q.tag)}</span>`:'';
+const hintH=q=>q.hint?`<p class="q-hint">${esc(q.hint)}</p>`:'';
+const STL={einig:'Einig',spannung:'Spannung',konflikt:'Konflikt',raus:'Raus',verschieden:'Verschieden',achtung:'Achtung',offen:'Offen'};
+const LOCAL_INFO='So geht es ohne Konto: Deine Antworten werden nur hier auf diesem Gerät gespeichert. Wenn du fertig bist, tippst du auf „Abgeben“ und schickst den Text, der dann erscheint, per WhatsApp an Jonas. Öffne die Seite nicht im privaten Modus, sonst ist beim Schließen alles weg.';
+function b64enc(str){return btoa(unescape(encodeURIComponent(str)));}
+function b64dec(b){return decodeURIComponent(escape(atob(b)));}
+function localPerson(id){return {key:slug(id.name),name:id.name,partner:id.partner||'',haushalt:id.partner?`${id.name} & ${id.partner}`:id.name};}
+
+/* ---------- Zustand ---------- */
+const S={db:null,user:null,uid:null,mode:'loading',people:[],configExists:false,revealed:false,submitted:{},
+  me:null,answers:{},notes:{},changedAt:null,section:0,view:'fill',demo:false,confirm:null,revealAsk:false,
+  saveTimer:null,saveChain:Promise.resolve(),saveState:'',profileText:'',
+  coreOnly:false,props:[],comments:null,commentsOff:false,propConfirm:null,propChain:{},
+  localProps:[],editId:false,importPending:null};
+S.coreOnly=!!lsGet('wp-core');
+
+/* ---------- Helfer ---------- */
+const $=s=>document.querySelector(s);
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function lsGet(k){try{const v=localStorage.getItem(k);return v?JSON.parse(v):null;}catch(e){return null;}}
+function lsSet(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}}
+function slug(s){return (s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/ß/g,'ss').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,24)||'person';}
+function short(n){n=String(n||'');return n.length>9?n.slice(0,8)+'…':n;}
+function notice(msg,warn){const n=$('#notice');if(!msg){n.hidden=true;return;}n.textContent=msg;n.className='notice'+(warn?' warn':'');n.hidden=false;}
+function households(people){const m=new Map();people.forEach(p=>{const h=p.haushalt||p.name;if(!m.has(h))m.set(h,[]);m.get(h).push(p);});return m;}
+function totalUnits(){let n=0;SECTIONS.forEach(s=>n+=secUnits(s));return n;}
+function secUnits(s){let n=0;visQ(s).forEach(q=>{if(q.t==='P')n+=q.items.length;else if(q.t!=='T')n++;});return n;}
+function secDone(s,a){let n=0;visQ(s).forEach(q=>{if(q.t==='P')q.items.forEach(it=>{if(a[pk(q,it)])n++;});else if(q.t==='M'){if(Array.isArray(a[q.id])&&a[q.id].length)n++;}else if(q.t!=='T'&&a[q.id]!=null)n++;});return n;}
+function fmtDate(iso){try{return new Date(iso).toLocaleDateString('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'});}catch(e){return '';}}
+
+/* ---------- Start ---------- */
+async function init(){
+  render();
+  let db=null,user=null,comments=null;
+  try{
+    if(window.claude&&window.claude.use){[db,user,comments]=await Promise.all([window.claude.use('db'),window.claude.use('user'),window.claude.use('comments').catch(()=>null)]);}
+  }catch(e){db=null;}
+  S.comments=comments||null;
+  let uid=null;
+  if(db&&user){try{uid=await user.id();}catch(e){uid=null;}}
+  if(db&&uid){
+    S.db=db;S.user=user;S.uid=uid;S.mode='shared';
+    db.doc('projekt/config').onSnapshot(snap=>{
+      const d=snap.exists?snap.data():null;
+      S.configExists=!!snap.exists;
+      S.people=(d&&Array.isArray(d.participants))?d.participants.filter(p=>p&&p.key&&p.name):[];
+      S.revealed=!!(d&&d.revealed);
+      if(S.me&&!S.people.some(p=>p.key===S.me)){S.me=null;}
+      renderPeople();renderEval();renderFill();renderLeute();
+    },err=>dbFail(err));
+    db.collection('vorschlaege').onSnapshot(qs=>{
+      S.props=qs.docs.map(d=>Object.assign({id:d.id},d.data()));renderLeute();
+    },err=>dbFail(err));
+    db.collection('antworten').onSnapshot(qs=>{
+      const m={};qs.docs.forEach(d=>{m[d.id]=d.data();});S.submitted=m;
+      renderPeople();renderEval();renderBar();
+    },err=>dbFail(err));
+  }else{
+    S.mode='local';
+    const lid=lsGet('wp-local-id');
+    S.people=(lid&&lid.name)?[localPerson(lid)]:[];
+    notice(LOCAL_INFO);
+  }
+  const last=lsGet('wp-me');
+  if(S.mode==='local'&&S.people.length)await pick(S.people[0].key);
+  else if(last&&S.mode==='shared')S.pendingMe=last;
+  render();
+}
+function dbFail(err){
+  if(err&&err.code==='revoked'){notice('Der Zugriff auf die gemeinsamen Daten ist nicht mehr verfügbar. Lade die Seite neu.',true);}
+}
+
+/* ---------- Render: Ausfüllen ---------- */
+function render(){renderTabs();renderPeople();renderFill();renderLeute();renderEval();renderBar();}
+function renderTabs(){
+  ['fill','leute','eval'].forEach(v=>{$('#tab-'+v).setAttribute('aria-selected',String(S.view===v));$('#view-'+v).hidden=S.view!==v;});
+}
+function renderPeople(){
+  const el=$('#people');
+  if(S.mode==='loading'){el.innerHTML='<p class="muted">Lade Teilnehmende …</p>';return;}
+  if(S.mode==='shared'&&S.pendingMe&&S.people.some(p=>p.key===S.pendingMe)){const k=S.pendingMe;S.pendingMe=null;pick(k);return;}
+  if(S.mode==='local'){
+    const me=S.people[0];
+    $('#add-person').hidden=true;
+    if(me&&!S.editId){el.innerHTML=`<p>Du füllst aus als <b>${esc(me.name)}</b>${me.partner?`, zusammen mit ${esc(me.partner)}`:''}. <button type="button" class="linkbtn" data-action="lid-edit">Ändern</button></p>`;return;}
+    el.innerHTML=`<div class="addp"><label>Dein Vorname<input type="text" id="lid-name" maxlength="30" autocomplete="given-name" value="${esc(me?me.name:'')}"></label><label>Mit wem würdest du einziehen? (optional)<input type="text" id="lid-partner" maxlength="40" autocomplete="off" placeholder="Partner oder Partnerin" value="${esc(me?me.partner:'')}"></label><div class="actions"><button type="button" class="btn" data-action="lid-save">${me?'Speichern':'Los geht’s'}</button>${me?'<button type="button" class="btn ghost" data-action="lid-cancel">Abbrechen</button>':''}</div><p id="lid-err" class="err" hidden></p></div>`;
+    return;
+  }
+  const hh=households(S.people);
+  let html='';
+  if(!S.people.length){html='<p class="muted">Noch niemand eingetragen. Füge dich als erste Person hinzu.</p>';}
+  html+='<div class="households">';
+  hh.forEach((ps,h)=>{
+    html+=`<div class="hh"><span class="hh-name">${esc(h)}</span><div class="hh-row">`+ps.map(p=>{
+      const sub=S.submitted[p.key]&&S.submitted[p.key].submittedAt;
+      return `<button type="button" class="pchip" aria-pressed="${S.me===p.key}" data-action="pick" data-key="${esc(p.key)}">${esc(p.name)}${sub?'<span class="pstat">✓ abgegeben</span>':''}</button>`;
+    }).join('')+'</div></div>';
+  });
+  html+=`<div class="hh"><span class="hh-name">&nbsp;</span><div class="hh-row"><button type="button" class="pchip add" data-action="add-open">+ Person</button></div></div></div>`;
+  el.innerHTML=html;
+  $('#hh-list').innerHTML=[...hh.keys()].map(h=>`<option value="${esc(h)}"></option>`).join('');
+}
+function renderFill(){
+  const has=!!S.me;
+  $('#fill-body').hidden=!has;
+  $('#fill-empty').hidden=has;
+  $('#bar').hidden=!has||S.view!=='fill';
+  if(!has)return;
+  $('#btn-core').setAttribute('aria-pressed',String(S.coreOnly));
+  renderSecnav();renderSection();renderBar();
+}
+function renderSecnav(){
+  $('#secnav').innerHTML=SECTIONS.map((s,i)=>{
+    const d=secDone(s,S.answers),u=secUnits(s);
+    return `<button type="button" data-action="sec" data-i="${i}" ${i===S.section?'aria-current="step"':''}><span class="sn-t">${esc(s.title)}</span><span class="sn-c${d===u?' full':''}">${d}/${u}</span></button>`;
+  }).join('');
+}
+function renderSection(){
+  const s=SECTIONS[S.section];
+  let html=`<div class="sec-head"><p class="label-mono">Abschnitt ${S.section+1} von ${SECTIONS.length}</p><h2>${esc(s.title)}</h2><p class="sec-intro">${esc(s.intro)}</p></div><div class="qlist">`;
+  if(S.coreOnly&&visQ(s).length<s.q.length)html+=`<p class="muted small">Kurzversion: ${s.q.length-visQ(s).length} weitere Fragen in diesem Abschnitt sind ausgeblendet.</p>`;
+  visQ(s).forEach(q=>{html+=qHtml(q);});
+  html+=`<div class="q q-card"><label class="q-label" for="f-note-${s.id}">Anmerkungen zu „${esc(s.title)}“ <span class="muted" style="font-weight:400">(optional)</span></label><textarea id="f-note-${s.id}" rows="2" data-action="note" data-key="${s.id}">${esc(S.notes[s.id]||'')}</textarea></div>`;
+  html+='</div>';
+  $('#section').innerHTML=html;
+  $('#btn-prev').disabled=S.section===0;
+  $('#btn-next').textContent=S.section===SECTIONS.length-1?'Zum Abgeben':'Weiter';
+}
+function qHtml(q){
+  const a=S.answers;
+  if(q.t==='P'){
+    return `<fieldset class="q q-card"><legend class="q-label">${esc(q.label)}</legend>${hintH(q)}<div class="pref-list">`+q.items.map(it=>{
+      const key=pk(q,it),cur=a[key];
+      return `<div class="pref-row"><div class="pref-label" id="l-${key}">${esc(it.label)}${it.tag?`<span class="itag">${esc(it.tag)}</span>`:''}</div><div class="seg" role="radiogroup" aria-labelledby="l-${key}">`+
+        SCALE.map(sv=>`<button type="button" class="seg-btn r-${sv.k}" role="radio" aria-checked="${cur===sv.k}" title="${sv.label}" data-action="set" data-key="${key}" data-val="${sv.k}">${sv.short}</button>`).join('')+'</div></div>';
+    }).join('')+'</div></fieldset>';
+  }
+  if(q.t==='M'){
+    const cur=Array.isArray(a[q.id])?a[q.id]:[];
+    return `<fieldset class="q q-card"><legend class="q-label">${esc(q.label)}${tagH(q)}</legend>${hintH(q)}<div class="chips">`+
+      q.opts.map((o,i)=>`<button type="button" class="chip" role="checkbox" aria-checked="${cur.includes(i)}" data-action="toggle" data-key="${q.id}" data-val="${i}">${esc(o)}</button>`).join('')+'</div></fieldset>';
+  }
+  if(q.t==='C'){
+    const cur=a[q.id];
+    return `<fieldset class="q q-card"><legend class="q-label">${esc(q.label)}${tagH(q)}</legend>${hintH(q)}<div class="chips" role="radiogroup">`+
+      q.opts.map((o,i)=>`<button type="button" class="chip" role="radio" aria-checked="${cur===i}" data-action="set" data-num="1" data-key="${q.id}" data-val="${i}">${esc(o)}</button>`).join('')+'</div></fieldset>';
+  }
+  if(q.t==='R'){
+    const cur=a[q.id];
+    return `<div class="q q-card"><label class="q-label" for="f-${q.id}">${esc(q.label)}</label><div class="range"><span>${esc(q.left)}</span><input type="range" id="f-${q.id}" min="0" max="100" step="5" value="${cur==null?50:cur}" data-action="range" data-key="${q.id}"><span>${esc(q.right)}</span></div><output id="o-${q.id}" class="range-out${cur==null?' unset':''}">${cur==null?'Noch nicht gesetzt. Schieb den Regler.':cur+' %'}</output></div>`;
+  }
+  return `<div class="q q-card"><label class="q-label" for="f-${q.id}">${esc(q.label)}</label><textarea id="f-${q.id}" rows="2" data-action="text" data-key="${q.id}" placeholder="${esc(q.ph||'')}">${esc(a[q.id]||'')}</textarea></div>`;
+}
+function renderBar(){
+  if(!S.me){return;}
+  const total=totalUnits();let done=0;SECTIONS.forEach(s=>done+=secDone(s,S.answers));
+  const sub=S.submitted[S.me];
+  const mineSub=sub&&sub.submittedAt&&(S.mode==='local'||sub.by===S.uid||sub.by==='import');
+  let status=S.saveState;
+  $('#bar-txt').textContent=`${S.coreOnly?'Kurzversion: ':''}${done} von ${total} beantwortet${status?' · '+status:''}`;
+  $('#bar-meter').style.width=(total?Math.round(done/total*100):0)+'%';
+  const btn=$('#btn-submit');
+  const changed=mineSub&&S.changedAt&&S.changedAt>sub.submittedAt;
+  if(S.mode==='shared'&&mineSub&&!changed){btn.textContent='Abgegeben ✓';btn.disabled=true;}
+  else{btn.textContent=changed?'Änderungen abgeben':'Abgeben';btn.disabled=false;}
+  const c=$('#bar-confirm');
+  if(!S.confirm){c.hidden=true;c.innerHTML='';return;}
+  const open=total-done;
+  const foreign=S.mode==='shared'&&sub&&sub.submittedAt&&sub.by&&sub.by!==S.uid;
+  const me=S.people.find(p=>p.key===S.me);
+  let txt=open>0?`Du hast ${open} Fragen offen gelassen. Das ist in Ordnung, offene Fragen zählen einfach nicht mit. `:'';
+  txt+=S.mode==='shared'?'Deine Antworten bleiben verdeckt, bis alle abgegeben haben. Ändern kannst du sie auch danach noch.':'Du bekommst einen Text, den du Jonas per WhatsApp schickst.';
+  if(foreign)txt=`Für ${me?me.name:'diese Person'} wurde schon von einem anderen Konto abgegeben. Wenn du jetzt abgibst, ersetzt du diese Antworten. `+txt;
+  c.innerHTML=`<p>${esc(txt)}</p><div class="row"><button type="button" class="btn" data-action="submit">${S.mode==='shared'?'Ja, abgeben':'Text erzeugen'}</button><button type="button" class="btn ghost" data-action="submit-cancel">Noch nicht</button></div>`;
+  c.hidden=false;
+}
+
+/* ---------- Speichern ---------- */
+function draftRef(){return S.db.doc('data/users/'+S.uid+'/entwurf-'+S.me);}
+function markChanged(){
+  S.changedAt=new Date().toISOString();
+  S.saveState=S.mode==='shared'?'speichert …':'auf diesem Gerät gespeichert';
+  clearTimeout(S.saveTimer);
+  S.saveTimer=setTimeout(saveDraft,1200);
+  renderBar();
+}
+function saveDraft(){
+  clearTimeout(S.saveTimer);S.saveTimer=null;
+  const me=S.me;if(!me)return S.saveChain;
+  const body={person:me,answers:JSON.parse(JSON.stringify(S.answers)),notes:JSON.parse(JSON.stringify(S.notes)),updatedAt:S.changedAt||new Date().toISOString()};
+  if(S.mode!=='shared'){lsSet('wp-draft-'+me,body);S.saveState='auf diesem Gerät gespeichert';renderBar();return Promise.resolve();}
+  const ref=draftRef();
+  S.saveChain=S.saveChain.then(()=>ref.set(body)).then(()=>{S.saveState='gespeichert';renderBar();}).catch(e=>writeFail(e,body));
+  return S.saveChain;
+}
+function writeFail(e,body){
+  const code=e&&e.code;
+  if(code==='invalid_argument'||code==='not_granted'||code==='revoked'){
+    S.mode='local';
+    const cur=S.people.find(p=>p.key===S.me);if(cur)S.people=[Object.assign({partner:''},cur)];
+    if(body)lsSet('wp-draft-'+body.person,body);
+    S.saveState='auf diesem Gerät gespeichert';
+    notice('Du kannst auf dieser Seite nichts für die anderen speichern, weil sie nur zum Ansehen mit dir geteilt ist. Deine Antworten bleiben vorerst auf diesem Gerät. Bitte Jonas, dich als Bearbeiter einzuladen, oder gib ab und schick ihm den Text.',true);
+  }else if(code==='quota_exceeded'){
+    S.saveState='nicht gespeichert';notice('Der Speicher dieser Seite ist voll. Sag Jonas Bescheid.',true);
+  }else{
+    S.saveState='nicht gespeichert, versuche es gleich erneut';
+    setTimeout(saveDraft,4000);
+  }
+  renderBar();
+}
+async function pick(key){
+  if(S.me&&S.saveTimer)await saveDraft();
+  S.me=key;S.answers={};S.notes={};S.changedAt=null;S.section=0;S.confirm=null;S.saveState='';
+  lsSet('wp-me',key);
+  $('#export').hidden=true;
+  if(S.mode==='shared'){
+    try{
+      const snap=await draftRef().get();
+      if(snap.exists){const d=snap.data();S.answers=Object.assign({},d.answers||{});S.notes=Object.assign({},d.notes||{});S.changedAt=d.updatedAt||null;}
+      else{const sub=S.submitted[key];if(sub&&sub.by===S.uid){S.answers=Object.assign({},sub.answers||{});S.notes=Object.assign({},sub.notes||{});S.changedAt=sub.submittedAt;}}
+    }catch(e){}
+  }else{
+    const d=lsGet('wp-draft-'+key);if(d){S.answers=d.answers||{};S.notes=d.notes||{};S.changedAt=d.updatedAt||null;}
+    S.localProps=lsGet('wp-lprops-'+key)||[];
+  }
+  renderPeople();renderFill();renderLeute();
+}
+
+/* ---------- Weitere Leute ---------- */
+const VOTES=[{k:'gern',label:'Gern dabei'},{k:'ok',label:'Wäre ok'},{k:'reden',label:'Erst reden'}];
+function splitNames(n){const parts=String(n||'').split(/\s*(?:&|\+|,|\/|\bund\b)\s*/i).map(x=>x.trim()).filter(Boolean);return parts.length?parts:[String(n||'').trim()];}
+function renderLeute(){
+  const meBox=$('#leute-me'),form=$('#prop-form'),list=$('#props');
+  if(S.mode==='loading'){meBox.innerHTML='';form.hidden=true;list.innerHTML='<p class="muted">Lade …</p>';return;}
+  if(S.mode!=='shared'){
+    meBox.innerHTML=S.me?'<p class="small">Deine Vorschläge gehen zusammen mit deinen Antworten an Jonas. Abgestimmt wird dann gemeinsam.</p>':'<p class="small">Trag zuerst im Tab „Ausfüllen“ deinen Namen ein.</p>';
+    form.hidden=!S.me;
+    const lp=S.localProps||[];
+    list.innerHTML=lp.length?lp.map((p,i)=>`<article class="prop"><div class="prop-head"><h3>${esc(p.name)}</h3><span class="pill st-offen">Geht mit deinen Antworten raus</span></div>${p.warum?`<p class="prop-why">${esc(p.warum)}</p>`:''}<div class="prop-actions"><button type="button" class="btn ghost small" data-action="lprop-del" data-i="${i}">Entfernen</button></div></article>`).join(''):'<div class="empty-props">Noch keine Vorschläge von dir.</div>';
+    return;
+  }
+  const me=S.people.find(p=>p.key===S.me);
+  if(me)meBox.innerHTML=`<p class="small">Du schlägst vor und stimmst ab als <b>${esc(me.name)}</b>. <button type="button" class="linkbtn" data-action="view" data-view="fill">Ändern</button></p>`;
+  else meBox.innerHTML=`<p class="small" style="margin-bottom:8px">Wer bist du?</p><div class="hh-row">${S.people.map(p=>`<button type="button" class="pchip" data-action="pick" data-key="${esc(p.key)}">${esc(p.name)}</button>`).join('')}</div>`;
+  form.hidden=!me;
+  const props=S.props.slice().sort((a,b)=>{const da=a.status==='aufgenommen',db_=b.status==='aufgenommen';if(da!==db_)return da?1:-1;return String(b.createdAt||'').localeCompare(String(a.createdAt||''));});
+  list.innerHTML=props.length?props.map(propHtml).join(''):'<div class="empty-props">Noch keine Vorschläge. Wer euch einfällt, kommt oben rein.</div>';
+}
+function propHtml(p){
+  const voters=S.people.map(x=>x.key);
+  const votes=p.votes||{};
+  const voted=voters.filter(k=>votes[k]);
+  const all=voters.length>0&&voted.length===voters.length;
+  const cnt={gern:0,ok:0,reden:0};voted.forEach(k=>{if(cnt[votes[k]]!=null)cnt[votes[k]]++;});
+  const from=S.people.find(x=>x.key===p.von);
+  const done=p.status==='aufgenommen';
+  const mine=S.me?votes[S.me]:null;
+  const status=done?'<span class="pill st-einig">Aufgenommen</span>':all?(cnt.reden?'<span class="pill st-spannung">Erst reden</span>':'<span class="pill st-einig">Alle dafür</span>'):'<span class="pill st-offen">Abstimmung läuft</span>';
+  let h=`<article class="prop${done?' done':''}" id="v-${esc(p.id)}"><div class="prop-head"><h3>${esc(p.name)}</h3>${status}</div>`;
+  h+=`<p class="prop-meta">Vorgeschlagen von ${esc(from?from.name:'jemandem')}${p.createdAt?' am '+fmtDate(p.createdAt):''}</p>`;
+  if(p.warum)h+=`<p class="prop-why">${esc(p.warum)}</p>`;
+  if(!done)h+=`<div class="seg3" role="radiogroup" aria-label="Dein Stimmungsbild zu ${esc(p.name)}">`+VOTES.map(v=>`<button type="button" class="seg-btn v-${v.k}" role="radio" aria-checked="${mine===v.k}" data-action="vote" data-id="${esc(p.id)}" data-val="${v.k}"${S.me?'':' disabled'}>${v.label}</button>`).join('')+'</div>';
+  if(done){
+    h+=`<p class="tally">Aufgenommen${p.aufgenommenAm?' am '+fmtDate(p.aufgenommenAm):''}. Falls noch nicht geschehen: über das Teilen-Menü einladen.</p>`;
+  }else if(all){
+    h+=`<p class="tally">${VOTES.filter(v=>cnt[v.k]).map(v=>`${cnt[v.k]}× ${v.label}`).join(' · ')}</p>`;
+    if(cnt.reden&&!done)h+=`<p class="small">Mindestens eine Person möchte erst reden. Am besten persönlich und ohne Begründung hier.</p>`;
+  }else{
+    const open=S.people.filter(x=>!votes[x.key]).map(x=>x.name);
+    h+=`<p class="tally">${voted.length} von ${voters.length} haben abgestimmt, das Ergebnis erscheint, wenn alle dabei sind.${open.length?' Noch offen: '+esc(open.join(', '))+'.':''}</p>`;
+  }
+  const acts=[];
+  if(S.comments&&!S.commentsOff)acts.push(`<button type="button" class="btn ghost small" data-action="prop-comment" data-id="${esc(p.id)}">Kommentieren</button>`);
+  if(all&&!cnt.reden&&!done&&S.me)acts.push(`<button type="button" class="btn small" data-action="prop-accept-ask" data-id="${esc(p.id)}">Als Teilnehmende aufnehmen</button>`);
+  if(!done&&S.me&&p.von===S.me)acts.push(`<button type="button" class="btn ghost small" data-action="prop-withdraw-ask" data-id="${esc(p.id)}">Zurückziehen</button>`);
+  if(acts.length)h+=`<div class="prop-actions">${acts.join('')}</div>`;
+  const c=S.propConfirm;
+  if(c&&c.id===p.id){
+    if(c.kind==='accept'){
+      const names=splitNames(p.name),pl=names.length>1;
+      h+=`<div class="confirm"><p>${esc(names.join(' und '))} ${pl?'werden':'wird'} als Teilnehmende eingetragen${pl?` (Haushalt „${esc(p.name)}“)`:''} und ${pl?'können':'kann'} dann den Fragebogen ausfüllen. Eingeladen werden sie über das Teilen-Menü dieser Seite.</p><div class="row"><button type="button" class="btn small" data-action="prop-accept" data-id="${esc(p.id)}">Ja, aufnehmen</button><button type="button" class="btn ghost small" data-action="prop-cancel">Abbrechen</button></div></div>`;
+    }else{
+      h+=`<div class="confirm"><p>Vorschlag „${esc(p.name)}“ mit allen Stimmen löschen?</p><div class="row"><button type="button" class="btn small" data-action="prop-withdraw" data-id="${esc(p.id)}">Ja, zurückziehen</button><button type="button" class="btn ghost small" data-action="prop-cancel">Abbrechen</button></div></div>`;
+    }
+  }
+  return h+'</article>';
+}
+function propFail(e){
+  notice(e&&e.code==='quota_exceeded'?'Der Speicher dieser Seite ist voll. Sag Jonas Bescheid.':'Das hat nicht geklappt. Vermutlich ist die Seite nur zum Ansehen mit dir geteilt. Bitte Jonas, dich als Bearbeiter einzuladen.',true);
+}
+async function addProp(){
+  const name=$('#pp-name').value.trim(),why=$('#pp-why').value.trim(),err=$('#pp-err');
+  if(!name){err.textContent='Bitte einen Namen eingeben.';err.hidden=false;return;}
+  if(!S.me){err.textContent='Wähle zuerst, wer du bist.';err.hidden=false;return;}
+  err.hidden=true;
+  if(S.mode!=='shared'){
+    S.localProps=(S.localProps||[]).concat([{name,warum:why,t:new Date().toISOString()}]);
+    lsSet('wp-lprops-'+S.me,S.localProps);$('#pp-name').value='';$('#pp-why').value='';renderLeute();return;
+  }
+  try{await S.db.collection('vorschlaege').add({name,warum:why,von:S.me,createdAt:new Date().toISOString(),votes:{},status:'offen'});$('#pp-name').value='';$('#pp-why').value='';}
+  catch(e){err.textContent=e&&e.code==='quota_exceeded'?'Der Speicher dieser Seite ist voll.':'Konnte nicht speichern. Vermutlich ist die Seite nur zum Ansehen mit dir geteilt.';err.hidden=false;}
+}
+function castVote(id,val){
+  const p=S.props.find(x=>x.id===id);if(!p||!S.me||!S.db)return;
+  const nv=(p.votes||{})[S.me]===val?null:val;
+  const ref=S.db.doc('vorschlaege/'+id),me=S.me;
+  S.propChain[id]=(S.propChain[id]||Promise.resolve()).then(()=>ref.update({votes:{[me]:nv}})).catch(propFail);
+}
+async function acceptProp(id){
+  const p=S.props.find(x=>x.id===id);if(!p)return;
+  const names=splitNames(p.name),hh=p.name.trim();
+  const taken=new Set(S.people.map(x=>x.key)),list=S.people.slice();
+  names.forEach(n=>{let k=slug(n),b=k,i=2;while(taken.has(k))k=b+'-'+(i++);taken.add(k);list.push({key:k,name:n,haushalt:names.length>1?hh:n});});
+  try{
+    if(S.configExists)await S.db.doc('projekt/config').update({participants:list});
+    else await S.db.doc('projekt/config').set({participants:list,revealed:false});
+    await S.db.doc('vorschlaege/'+id).update({status:'aufgenommen',aufgenommenAm:new Date().toISOString()});
+    S.propConfirm=null;
+  }catch(e){propFail(e);}
+  renderLeute();
+}
+
+/* ---------- Abgeben ---------- */
+async function submit(){
+  S.confirm=null;
+  const me=S.me;const person=S.people.find(p=>p.key===me);
+  await saveDraft();
+  if(S.mode==='shared'){
+    const body={person:me,answers:JSON.parse(JSON.stringify(S.answers)),notes:JSON.parse(JSON.stringify(S.notes)),submittedAt:new Date().toISOString(),by:S.uid};
+    try{
+      await S.db.doc('antworten/'+me).set(body);
+      S.changedAt=body.submittedAt;
+      notice(`Abgegeben. Sobald alle fertig sind, findest du die Auswertung im zweiten Tab.`);
+    }catch(e){writeFail(e,null);if(S.mode==='local')showExport(person);}
+  }else{showExport(person);}
+  renderBar();
+}
+function showExport(person){
+  const payload={p:S.me,name:person?person.name:S.me,partner:(person&&person.partner)||'',a:S.answers,n:S.notes,v:S.mode==='local'?(S.localProps||[]):[],t:new Date().toISOString()};
+  const text='Meine Antworten für den Wohnprojekt-Fragebogen:\nWOHNPROJEKT-ANTWORTEN v2 '+b64enc(JSON.stringify(payload));
+  $('#export-text').value=text;
+  const wa='https://wa.me/?text='+encodeURIComponent(text);
+  const waBtn=$('#export-wa');waBtn.href=wa;waBtn.hidden=wa.length>9000;
+  $('#export-msg').textContent='';
+  $('#export').hidden=false;
+  $('#export').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function copyText(text,ta,msgEl){
+  const ok=()=>{msgEl.textContent='Kopiert.';};
+  const fallback=()=>{ta.hidden=false;ta.focus();ta.select();msgEl.textContent='Markiert. Jetzt mit Strg+C oder Cmd+C kopieren.';};
+  try{navigator.clipboard.writeText(text).then(ok,fallback);}catch(e){fallback();}
+}
+
+/* ---------- Auswertung: Analyse ---------- */
+function prefStats(key,people,ans){return statsFromVals(people.map(p=>({p,k:(ans[p.key]||{})[key]})).filter(x=>x.k&&SC[x.k]));}
+const ROLE_IDS=new Set(['wirkaufen','wirkaufenopt','wirmieten','wirmietenopt']);
+const ROLE_PAIRS=[['wirkaufen','wirmieten',''],['wirkaufenopt','wirmietenopt',' mit Kaufoption']];
+function modelOptions(people,ans){
+  const q=QMAP.modell,out=[];
+  q.items.forEach(it=>{if(!ROLE_IDS.has(it.id))out.push({q,it,st:prefStats(pk(q,it),people,ans)});});
+  const hh=[...households(people).entries()];
+  ROLE_PAIRS.forEach(([buy,rent,suffix],vi)=>hh.forEach(([ha,pa],ia)=>hh.forEach(([hb,pb],ib)=>{
+    if(ia===ib)return;
+    const vals=pa.map(p=>({p,k:(ans[p.key]||{})[q.id+'__'+buy],role:'kauft'})).concat(pb.map(p=>({p,k:(ans[p.key]||{})[q.id+'__'+rent],role:'mietet'}))).filter(x=>x.k&&SC[x.k]);
+    const label=`${ha} ${pa.length>1?'kaufen':'kauft'}, ${hb} ${pb.length>1?'mieten':'mietet'}${suffix}`;
+    out.push({q,it:{id:'combo-'+vi+'-'+ia+'-'+ib,label,combo:true},st:statsFromVals(vals)});
+  })));
+  return out;
+}
+function statsFromVals(vals){
+  if(!vals.length)return {vals,status:'offen',sum:0,must:[]};
+  const ks=vals.map(x=>x.k);
+  const pos=ks.some(k=>k==='muss'||k==='gern');
+  const nogo=ks.includes('nogo');const eher=ks.filter(k=>k==='eher').length;
+  const sum=ks.reduce((s,k)=>s+SC[k].v,0);
+  let status='einig';
+  if(nogo)status=pos?'konflikt':'raus';
+  else if(eher&&pos)status='spannung';
+  else if(eher&&eher*2>=ks.length)status='raus';
+  return {vals,status,sum,must:vals.filter(x=>x.k==='muss').map(x=>x.p.name)};
+}
+function choiceStats(q,people,ans){
+  const vals=people.map(p=>({p,i:(ans[p.key]||{})[q.id]})).filter(x=>typeof x.i==='number'&&q.opts[x.i]!=null);
+  if(!vals.length)return {vals,status:'offen'};
+  const spread=arr=>arr.length?Math.max(...arr)-Math.min(...arr):0;
+  let status;
+  if(q.scope==='h'){
+    let worst=0;households(people).forEach(ps=>{const is=vals.filter(v=>ps.includes(v.p)).map(v=>v.i);worst=Math.max(worst,spread(is));});
+    status=worst>=2?'spannung':'einig';
+  }else if(q.ord){status=spread(vals.map(v=>v.i))>=2?'spannung':'einig';}
+  else{status=new Set(vals.map(v=>v.i)).size===1?'einig':'verschieden';}
+  return {vals,status};
+}
+function multiStats(q,people,ans){
+  const vals=people.map(p=>({p,s:(ans[p.key]||{})[q.id]})).filter(x=>Array.isArray(x.s)).map(x=>({p:x.p,s:x.s.filter(i=>q.opts[i]!=null)})).filter(x=>x.s.length);
+  if(!vals.length)return {vals,status:'offen'};
+  let status='einig';
+  if(q.scope==='h')households(people).forEach(ps=>{const v=vals.filter(y=>ps.includes(y.p));if(v.length>1&&!intersect(v.map(y=>y.s)).length)status='spannung';});
+  else if(vals.length>1&&!intersect(vals.map(y=>y.s)).length)status='spannung';
+  return {vals,status};
+}
+function rangeStats(q,people,ans){
+  const vals=people.map(p=>({p,v:(ans[p.key]||{})[q.id]})).filter(x=>typeof x.v==='number');
+  if(!vals.length)return {vals,status:'offen'};
+  const vs=vals.map(x=>x.v);
+  let status=Math.max(...vs)-Math.min(...vs)>=40?'spannung':'einig';
+  if(q.warn!=null&&vs.some(v=>v<q.warn))status='achtung';
+  return {vals,status};
+}
+function allItems(people,ans){
+  const out=[];
+  SECTIONS.forEach(s=>s.q.forEach(q=>{
+    if(q.t==='P'){if(q.id==='modell')modelOptions(people,ans).forEach(x=>out.push(x));else q.items.forEach(it=>out.push({q,it,st:prefStats(pk(q,it),people,ans)}));}
+    else if(q.t==='C')out.push({q,st:choiceStats(q,people,ans)});
+    else if(q.t==='M')out.push({q,st:multiStats(q,people,ans)});
+    else if(q.t==='R')out.push({q,st:rangeStats(q,people,ans)});
+  }));
+  return out;
+}
+
+/* ---------- Auswertung: Suchprofil ---------- */
+function buildProfile(people,ans){
+  const rows=[];
+  const prefSel=(qid,sts)=>QMAP[qid].items.map(it=>({it,st:prefStats(pk(QMAP[qid],it),people,ans)})).filter(x=>sts.includes(x.st.status)).sort((a,b)=>b.st.sum-a.st.sum);
+  const lab=list=>list.map(x=>x.it.label+(x.st.status==='spannung'?' (klären)':'')).join('; ');
+  const add=(k,v)=>{if(v)rows.push([k,v]);};
+  add('Wohnform gesucht',lab(prefSel('form',['einig','spannung'])));
+  const mo=modelOptions(people,ans);
+  const moSel=sts=>mo.filter(x=>sts.includes(x.st.status)&&x.st.vals.length).sort((a,b)=>b.st.sum-a.st.sum);
+  add('Kaufen/Mieten, beste Varianten',lab(moSel(['einig','spannung']).slice(0,3)));
+  add('Zustand',lab(prefSel('zustand',['einig','spannung'])));
+  add('Heizung akzeptabel',lab(prefSel('energie',['einig','spannung'])));
+  add('Orte, beliebteste zuerst',lab(prefSel('ort',['einig','spannung']).filter(x=>x.st.sum>=0).slice(0,8)));
+  const must=['oepnv','umgebung'].flatMap(id=>QMAP[id].items.map(it=>({it,st:prefStats(pk(QMAP[id],it),people,ans)}))).filter(x=>x.st.must.length&&x.st.status!=='konflikt');
+  add('Muss vor Ort',must.map(x=>`${x.it.label} (Muss für ${x.st.must.join(', ')})`).join('; '));
+  const ulm=people.map(p=>({p,i:(ans[p.key]||{}).ulm})).filter(x=>typeof x.i==='number'&&x.i>=2);
+  add('Richtung Ulm',ulm.map(x=>`${QMAP.ulm.opts[x.i]} für ${x.p.name}`).join(', '));
+  const nice=['oepnv','umgebung'].flatMap(id=>QMAP[id].items.map(it=>({it,st:prefStats(pk(QMAP[id],it),people,ans)}))).filter(x=>!x.st.must.length&&x.st.sum>0&&x.st.status==='einig');
+  add('Schön wäre',nice.map(x=>x.it.label).join('; '));
+  const pen=people.map(p=>(ans[p.key]||{}).pendel).filter(v=>typeof v==='number');
+  if(pen.length)add('Pendelzeit','höchstens '+QMAP.pendel.opts[Math.min(...pen)]+' einfach (strengste Angabe)');
+  const modes=(p,ks)=>QMAP.verkehr.items.filter(it=>ks.includes((ans[p.key]||{})[pk(QMAP.verkehr,it)])).map(it=>it.label);
+  const work=people.map(p=>{const t=((ans[p.key]||{}).arbeitsort||'').trim();const ok=modes(p,['muss','gern','ok']),no=modes(p,['nogo','eher']);if(!t&&!ok.length&&!no.length)return null;return `${p.name}: ${t||'Arbeitsort offen'}${ok.length?'; ok: '+ok.join(', '):''}${no.length?'; lieber nicht: '+no.join(', '):''}`;}).filter(Boolean);
+  add('Arbeitswege',work.join(' · '));
+  const hhLines=(qid,mode)=>{const q=QMAP[qid];const out=[];households(people).forEach((ps,h)=>{
+    if(q.t==='M'){const ss=ps.map(p=>(ans[p.key]||{})[qid]).filter(v=>Array.isArray(v)&&v.length);if(!ss.length)return;let c=intersect(ss),note='';if(!c.length){c=[...new Set(ss.flat())].sort((a,b)=>a-b);note=' (uneinig)';}out.push(`${h}: ${c.map(i=>q.opts[i]).join(', ')}${note}`);return;}
+    const is=ps.map(p=>(ans[p.key]||{})[qid]).filter(v=>typeof v==='number');if(!is.length)return;
+    let v;if(mode==='min')v=QMAP[qid].opts[Math.min(...is)];else v=[...new Set(is)].sort((a,b)=>a-b).map(i=>QMAP[qid].opts[i]).join(' / ');out.push(`${h}: ${v}`);});return out.join(' · ');};
+  add('Fläche je Haushalt',hhLines('flaeche'));
+  add('Zimmer je Haushalt',hhLines('zimmer'));
+  add('Garten je Haushalt',hhLines('gartengr'));
+  add('Eigenkapital je Haushalt, heute',hhLines('ek'));
+  add('Eigenkapital je Haushalt, in 5 Jahren',hhLines('ek5'));
+  add('Kredit höchstens',hhLines('kredit','min'));
+  add('Rate: Wohlfühlwert',hhLines('rate','min'));
+  add('Rate: Schmerzgrenze',hhLines('grenze','min'));
+  add('Eltern',lab(prefSel('eltern',['einig','spannung']).filter(x=>x.st.sum>0)));
+  add('Überzählige Wohnungen',lab(prefSel('extra',['einig','spannung']).filter(x=>x.st.sum>0)));
+  const perP=(qid,f)=>people.map(p=>{const v=(ans[p.key]||{})[qid];return typeof v==='number'?`${p.name}: ${QMAP[qid].opts[v]}`:null;}).filter(Boolean).join(' · ');
+  const strict=qid=>{const vs=people.map(p=>(ans[p.key]||{})[qid]).filter(v=>typeof v==='number');return vs.length?QMAP[qid].opts[Math.min(...vs)]:'';};
+  add('Suche starten',perP('start'));
+  const ezs=people.map(p=>(ans[p.key]||{}).einzug).filter(v=>Array.isArray(v)&&v.length);
+  if(ezs.length){const c=intersect(ezs);add('Einzug',c.length?'für alle ok: '+c.map(i=>QMAP.einzug.opts[i]).join(', '):'keine gemeinsame Option, klären');}
+  add('Besichtigungen',perP('besichtigung'));
+  const rz=strict('renozeit');add('Renovierung vor Einzug',rz?'höchstens: '+rz+' (strengste Angabe)':'');
+  add('Lust auf Eigenleistung',perP('renolust'));
+  const out=['form','zustand','energie','ort'].flatMap(id=>prefSel(id,['raus'])).concat(moSel(['raus']));
+  add('Ausschließen',out.map(x=>x.it.label).join('; '));
+  const kl=['form','zustand','energie','ort','oepnv','konstrukt','eltern'].flatMap(id=>prefSel(id,['konflikt'])).concat(moSel(['konflikt']));
+  add('Vor der Suche klären',kl.map(x=>x.it.label).join('; '));
+  const date=new Date().toLocaleDateString('de-DE');
+  const text=`Suchprofil Wohnprojekt Augsburg (Stand ${date})\nGrundlage: Antworten von ${people.map(p=>p.name).join(', ')}\n\n`+rows.map(([k,v])=>`- ${k}: ${v}`).join('\n');
+  return {rows,text};
+}
+
+/* ---------- Auswertung: Render ---------- */
+function pill(st,n){return `<span class="pill st-${st}">${STL[st]}${n!=null?` <b>${n}</b>`:''}</span>`;}
+function prefChips(vals){return vals.map(x=>`<span class="pc r-${x.k}" title="${esc(x.p.name)}${x.role?' ('+x.role+')':''}: ${SC[x.k].label}">${esc(short(x.p.name))} <span class="pc-v">${SC[x.k].short}</span></span>`).join('');}
+function choiceVals(q,vals){return vals.map(x=>`<span class="cv"><b>${esc(short(x.p.name))}</b>${esc(q.opts[x.i])}</span>`).join('');}
+function evalHtml(people,ans,notes){
+  const items=allItems(people,ans);
+  const cnt={einig:0,spannung:0,konflikt:0,raus:0,achtung:0,verschieden:0};
+  items.forEach(x=>{if(cnt[x.st.status]!=null)cnt[x.st.status]++;});
+  let h='';
+  h+=`<div class="block"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:baseline"><h2>Konfliktkarte</h2><span class="muted" style="font-size:13px">${people.length} ${people.length===1?'Person':'Personen'} · ${people.map(p=>esc(p.name)).join(', ')}</span></div>`;
+  h+=`<div class="counts">${['einig','spannung','konflikt','achtung','raus','verschieden'].filter(k=>cnt[k]).map(k=>pill(k,cnt[k])).join('')}</div>`;
+  h+=`<p class="muted" style="font-size:13px">Konflikt: jemand sagt No-Go, jemand anderes will es. Spannung: „Lieber nicht“ trifft auf Zustimmung, oder Antworten liegen weit auseinander. Raus: niemand will es.</p>`;
+  const focus=items.filter(x=>x.st.status==='konflikt').concat(items.filter(x=>x.st.status==='achtung'),items.filter(x=>x.st.status==='spannung'));
+  h+=`<h3 style="margin-top:4px">Zuerst besprechen</h3>`;
+  if(!focus.length)h+=`<p class="muted">Nichts Strittiges. Ihr seid euch bemerkenswert einig.</p>`;
+  else{h+='<div>'+focus.slice(0,12).map(x=>rowHtml(x,people,true)).join('')+'</div>';if(focus.length>12)h+=`<p class="muted" style="font-size:13px">… und ${focus.length-12} weitere in den Abschnitten unten.</p>`;}
+  h+='</div>';
+  const prof=buildProfile(people,ans);S.profileText=prof.text;
+  h+=`<div class="block profile"><div style="display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;align-items:center"><h2>Suchprofil</h2><button type="button" class="btn ghost" data-action="copy-profile">Als Text kopieren</button></div>`;
+  h+=prof.rows.length?`<dl>${prof.rows.map(([k,v])=>`<dt>${esc(k)}</dt><dd>${esc(v)}</dd>`).join('')}</dl>`:'<p class="muted">Noch zu wenige Antworten für ein Suchprofil.</p>';
+  h+=`<p class="muted" style="font-size:13px">Den Text kannst du Claude geben, um damit den Such-Task für die Immobiliensuche neu aufzusetzen. Finanzangaben sind Bandbreiten, keine Finanzierungszusage.</p><textarea id="profile-text" class="mono-box" rows="6" readonly hidden></textarea><span id="profile-msg" class="muted" style="font-size:13px"></span></div>`;
+  SECTIONS.forEach(s=>{
+    const its=items.filter(x=>x.q.sec===s);
+    const c={};its.forEach(x=>{c[x.st.status]=(c[x.st.status]||0)+1;});
+    h+=`<details class="dsec"><summary><h3>${esc(s.title)}</h3><span class="counts">${['konflikt','spannung','achtung','einig'].filter(k=>c[k]).map(k=>pill(k,c[k])).join('')}</span></summary><div class="dsec-body">`;
+    s.q.forEach(q=>{
+      if(q.t==='P'){h+=`<div><p class="dq-title">${esc(q.label)}</p>`+its.filter(x=>x.q===q).map(x=>rowHtml(x,people,false)).join('')+'</div>';}
+      else if(q.t==='T'){
+        const qs=people.map(p=>({p,t:((ans[p.key]||{})[q.id]||'').trim()})).filter(x=>x.t);
+        h+=`<div><p class="dq-title">${esc(q.label)}</p>`+(qs.length?`<div class="er" style="border:0">${qs.map(x=>`<div class="quote"><b>${esc(x.p.name)}</b>${esc(x.t)}</div>`).join('')}</div>`:'<p class="muted" style="font-size:13px">Keine Angaben.</p>')+'</div>';
+      }else{h+=rowHtml(its.find(x=>x.q===q),people,false,true);}
+    });
+    const ns=people.map(p=>({p,t:(((notes||{})[p.key]||{})[s.id]||'').trim()})).filter(x=>x.t);
+    if(ns.length)h+=`<div><p class="dq-title">Anmerkungen</p><div class="er" style="border:0">${ns.map(x=>`<div class="quote"><b>${esc(x.p.name)}</b>${esc(x.t)}</div>`).join('')}</div></div>`;
+    h+='</div></details>';
+  });
+  return h;
+}
+function rowHtml(x,people,withGroup,standalone){
+  const q=x.q;let label,body;
+  if(q.t==='P'){label=esc(x.it.label)+(withGroup?`<small>${esc(q.sec.title)} · ${esc(q.label)}</small>`:'');body=prefChips(x.st.vals);}
+  else if(q.t==='C'){
+    label=esc(q.label)+(withGroup?`<small>${esc(q.sec.title)}</small>`:'');
+    if(q.scope==='h'){body='';households(people).forEach((ps,hn)=>{const v=x.st.vals.filter(y=>ps.includes(y.p));if(v.length)body+=`<div class="hh-group"><span class="hh-name">${esc(hn)}</span><div style="display:flex;flex-wrap:wrap;gap:6px">${choiceVals(q,v)}</div></div>`;});}
+    else body=choiceVals(q,x.st.vals);
+  }else if(q.t==='M'&&q.scope!=='h'){
+    label=esc(q.label)+(withGroup?`<small>${esc(q.sec.title)}</small>`:'');
+    const common=intersect(x.st.vals.map(y=>y.s));
+    body=x.st.vals.length?`<div class="hh-group"><span class="hh-name">Für alle ok: ${common.length?common.map(i=>esc(q.opts[i])).join(', '):'keine Überschneidung'}</span><div style="display:flex;flex-wrap:wrap;gap:6px">${x.st.vals.map(y=>`<span class="cv"><b>${esc(short(y.p.name))}</b>${y.s.map(i=>esc(q.opts[i])).join(', ')}</span>`).join('')}</div></div>`:'';
+  }else if(q.t==='M'){
+    label=esc(q.label)+(withGroup?`<small>${esc(q.sec.title)}</small>`:'');body='';
+    households(people).forEach((ps,hn)=>{const v=x.st.vals.filter(y=>ps.includes(y.p));if(!v.length)return;const common=intersect(v.map(y=>y.s));
+      body+=`<div class="hh-group"><span class="hh-name">${esc(hn)}${v.length>1?' · gemeinsam ok: '+(common.length?common.map(i=>esc(q.opts[i])).join(', '):'keine Überschneidung'):''}</span><div style="display:flex;flex-wrap:wrap;gap:6px">${v.map(y=>`<span class="cv"><b>${esc(short(y.p.name))}</b>${y.s.map(i=>esc(q.opts[i])).join(', ')}</span>`).join('')}</div></div>`;});
+  }else{label=esc(q.label)+(withGroup?`<small>${esc(q.sec.title)}</small>`:'');body=x.st.vals.map(y=>`<span class="cv"><b>${esc(short(y.p.name))}</b>${y.v} %</span>`).join('');}
+  if(!body)body='<span class="muted" style="font-size:13px">Keine Angaben.</span>';
+  return `<div class="er"${standalone?' style="border-top:0"':''}><div class="er-label">${label}</div>${pill(x.st.status)}<div class="er-body">${body}</div></div>`;
+}
+function renderEval(){
+  const el=$('#eval');
+  $('#import').hidden=!(S.mode==='shared'&&!S.demo);
+  if(S.demo){
+    const d=demoData();
+    el.innerHTML=`<div class="demo-banner"><span><b>Beispiel mit erfundenen Antworten.</b> So sieht die Auswertung aus, wenn alle abgegeben haben.</span><button type="button" class="btn" data-action="demo-off">Beispiel schließen</button></div>`+evalHtml(d.people,d.ans,{});
+    return;
+  }
+  if(S.mode==='loading'){el.innerHTML='<p class="muted">Lade …</p>';return;}
+  if(S.mode==='local'){
+    el.innerHTML=`<div class="block locked"><h2>Auswertung</h2><p class="muted">Die Auswertung sieht Jonas, sobald alle Antworten bei ihm sind. Am besten schaut ihr sie euch dann zusammen an.</p><button type="button" class="btn ghost" data-action="demo-on">Beispiel-Auswertung ansehen</button></div>`;
+    return;
+  }
+  const people=S.people;
+  const done=people.filter(p=>S.submitted[p.key]&&S.submitted[p.key].submittedAt);
+  const all=people.length>0&&done.length===people.length;
+  const strip=`<div class="strip">${people.map(p=>{const ok=S.submitted[p.key]&&S.submitted[p.key].submittedAt;return `<span class="st-chip${ok?' done':''}">${esc(p.name)} ${ok?'✓':'· offen'}</span>`;}).join('')}</div>`;
+  if(!people.length){el.innerHTML=`<div class="block locked"><h2>Auswertung</h2><p class="muted">Noch keine Teilnehmenden. Trag im Tab „Ausfüllen“ alle ein, die mitmachen.</p><button type="button" class="btn ghost" data-action="demo-on">Beispiel-Auswertung ansehen</button></div>`;return;}
+  if(!(all||S.revealed)){
+    let h=`<div class="block locked"><p class="label-mono">Noch verdeckt</p><span class="big">${done.length} von ${people.length}</span><p>haben abgegeben. Die Auswertung öffnet sich automatisch, sobald alle fertig sind.</p>${strip}<div style="display:flex;gap:8px;flex-wrap:wrap">`;
+    if(S.revealAsk)h+=`</div><div class="confirm"><p>Aufdecken, obwohl noch nicht alle abgegeben haben? Dann sieht jede und jeder die bisherigen Antworten, und wer noch ausfüllt, sieht sie vorher.</p><div class="row"><button type="button" class="btn" data-action="reveal">Ja, aufdecken</button><button type="button" class="btn ghost" data-action="reveal-cancel">Abbrechen</button></div></div><div>`;
+    else h+=`<button type="button" class="btn ghost" data-action="reveal-ask"${done.length?'':' disabled'}>Trotzdem aufdecken</button>`;
+    h+=`<button type="button" class="btn ghost" data-action="demo-on">Beispiel-Auswertung ansehen</button></div></div>`;
+    el.innerHTML=h;return;
+  }
+  const ans={},notes={};done.forEach(p=>{ans[p.key]=S.submitted[p.key].answers||{};notes[p.key]=S.submitted[p.key].notes||{};});
+  el.innerHTML=(all?'':`<div class="notice warn">Aufgedeckt, bevor alle abgegeben haben. ${strip.replace('class="strip"','class="strip" style="margin-top:8px"')}</div>`)+evalHtml(done,ans,notes);
+}
+
+/* ---------- Beispiel ---------- */
+function demoData(){
+  const people=[{key:'a',name:'Person A',haushalt:'Haushalt 1'},{key:'b',name:'Person B',haushalt:'Haushalt 1'},{key:'c',name:'Person C',haushalt:'Haushalt 2'},{key:'d',name:'Person D',haushalt:'Haushalt 2'}];
+  let seed=20261004;const rnd=()=>{seed=(seed*16807)%2147483647;return (seed-1)/2147483646;};
+  const w=[.12,.3,.33,.15,.1];const pickScale=()=>{let r=rnd(),c=0;for(let i=0;i<w.length;i++){c+=w[i];if(r<c)return SCALE[i].k;}return 'ok';};
+  const ans={};people.forEach(p=>ans[p.key]={});
+  const work=['Klinik West, Rad','Klinik in der Stadtmitte','Firma im Süden der Stadt','Klinik im Süden, Bahn'];
+  SECTIONS.forEach(s=>s.q.forEach(q=>{
+    if(q.t==='P')q.items.forEach(it=>people.forEach(p=>{ans[p.key][pk(q,it)]=pickScale();}));
+    else if(q.t==='C'){const base=Math.floor(rnd()*q.opts.length);people.forEach(p=>{let i=q.ord?base+Math.round((rnd()-.5)*2.4):(rnd()<.6?base:Math.floor(rnd()*q.opts.length));ans[p.key][q.id]=Math.max(0,Math.min(q.opts.length-1,i));});}
+    else if(q.t==='M'){const base=Math.floor(rnd()*q.opts.length);people.forEach(p=>{const len=Math.min(q.opts.length,1+Math.floor(rnd()*3));const st=Math.max(0,Math.min(q.opts.length-len,base+Math.round((rnd()-.5)*2)));ans[p.key][q.id]=Array.from({length:len},(_,k)=>st+k);});}
+    else if(q.t==='R')people.forEach(p=>{ans[p.key][q.id]=40+Math.round(rnd()*11)*5;});
+  }));
+  people.forEach((p,i)=>{ans[p.key].arbeitsort=work[i];});
+  ans.a.sorge='Dass wir uns über Geld streiten.';ans.c.sorge='Dass einer von uns beruflich wegziehen muss.';
+  return {people,ans};
+}
+
+/* ---------- Personen ---------- */
+async function addPerson(){
+  const name=$('#np-name').value.trim();const hh=$('#np-hh').value.trim();const err=$('#np-err');
+  if(!name){err.textContent='Bitte einen Namen eingeben.';err.hidden=false;return;}
+  let key=slug(name);const taken=new Set(S.people.map(p=>p.key));let n=2;const base=key;while(taken.has(key))key=base+'-'+(n++);
+  const list=S.people.concat([{key,name,haushalt:hh||name}]);
+  err.hidden=true;
+  if(S.mode==='shared'){
+    try{
+      if(S.configExists)await S.db.doc('projekt/config').update({participants:list});
+      else await S.db.doc('projekt/config').set({participants:list,revealed:false});
+    }catch(e){err.textContent='Konnte nicht speichern. Vermutlich ist die Seite nur zum Ansehen mit dir geteilt.';err.hidden=false;return;}
+  }else{S.people=list;lsSet('wp-people',list);}
+  $('#np-name').value='';$('#np-hh').value='';$('#add-person').hidden=true;
+  await pick(key);
+}
+
+/* ---------- Import ---------- */
+function parseImport(raw){
+  if(raw.indexOf('WOHNPROJEKT-ANTWORTEN')<0)return {err:'Das sieht nicht nach einer Antwort-Nachricht aus. Sie beginnt mit „Meine Antworten für den Wohnprojekt-Fragebogen“.'};
+  try{
+    const m=raw.match(/WOHNPROJEKT-ANTWORTEN\s+v2\s+([A-Za-z0-9+\/=]+)/);
+    let d;
+    if(m)d=JSON.parse(b64dec(m[1]));
+    else{const i=raw.indexOf('{');d=JSON.parse(raw.slice(i,raw.lastIndexOf('}')+1));}
+    if(!d||typeof d!=='object'||!d.a)throw new Error('leer');
+    return {d};
+  }catch(e){return {err:'Die Nachricht ist unvollständig. Bitte die ganze Nachricht kopieren und erneut einfügen.'};}
+}
+function matchPerson(d){
+  const k=d.p&&S.people.find(p=>p.key===d.p);if(k)return k;
+  const n=String(d.name||'').trim().toLowerCase();
+  return n?S.people.find(p=>p.name.trim().toLowerCase()===n)||null:null;
+}
+function renderImportChoice(){
+  const box=$('#imp-choose'),d=S.importPending;
+  if(!d){box.hidden=true;box.innerHTML='';return;}
+  box.innerHTML=`<p class="small">„${esc(d.name||'?')}“ ist hier noch nicht eingetragen. Zu wem gehören die Antworten?</p><div class="hh-row">${S.people.map(p=>`<button type="button" class="pchip" data-action="imp-assign" data-key="${esc(p.key)}">${esc(p.name)}</button>`).join('')}<button type="button" class="pchip add" data-action="imp-new">Neu anlegen als ${esc(d.name||'?')}</button></div>`;
+  box.hidden=false;
+}
+async function doImport(){
+  const msg=$('#imp-msg');msg.textContent='';
+  const r=parseImport($('#imp-text').value);
+  if(r.err){msg.textContent=r.err;return;}
+  const who=matchPerson(r.d);
+  if(!who){S.importPending=r.d;renderImportChoice();return;}
+  await saveImport(who.key,r.d);
+}
+async function importNew(){
+  const d=S.importPending;if(!d)return;
+  const name=String(d.name||'Unbekannt').trim().slice(0,30);
+  const partner=String(d.partner||'').trim().toLowerCase();
+  const mate=partner&&S.people.find(p=>p.name.trim().toLowerCase()===partner);
+  let key=slug(name);const taken=new Set(S.people.map(p=>p.key));let n=2;const base=key;while(taken.has(key))key=base+'-'+(n++);
+  const list=S.people.concat([{key,name,haushalt:mate?mate.haushalt:(d.partner?`${name} & ${d.partner}`:name)}]);
+  try{
+    if(S.configExists)await S.db.doc('projekt/config').update({participants:list});
+    else await S.db.doc('projekt/config').set({participants:list,revealed:false});
+    S.people=list;
+  }catch(e){$('#imp-msg').textContent='Konnte die Person nicht anlegen.';return;}
+  await saveImport(key,d);
+}
+async function saveImport(key,d){
+  const msg=$('#imp-msg');const now=new Date().toISOString();
+  const who=S.people.find(p=>p.key===key);
+  try{
+    await S.db.doc('antworten/'+key).set({person:key,answers:d.a||{},notes:d.n||{},submittedAt:d.t||now,by:'import'});
+    let added=0;
+    for(const v of (Array.isArray(d.v)?d.v:[])){
+      if(!v||!v.name)continue;
+      const nm=String(v.name).trim().slice(0,60);
+      if(S.props.some(p=>p.von===key&&String(p.name).trim().toLowerCase()===nm.toLowerCase()))continue;
+      await S.db.collection('vorschlaege').add({name:nm,warum:String(v.warum||'').slice(0,600),von:key,createdAt:v.t||d.t||now,votes:{},status:'offen'});
+      added++;
+    }
+    S.importPending=null;renderImportChoice();
+    msg.textContent=`Antworten von ${who?who.name:key} eingefügt${added?`, ${added===1?'1 Vorschlag':added+' Vorschläge'} übernommen`:''}.`;
+    $('#imp-text').value='';
+  }catch(e){msg.textContent=e&&e.code==='quota_exceeded'?'Der Speicher dieser Seite ist voll.':'Konnte nicht speichern.';}
+}
+async function saveIdentity(){
+  const name=$('#lid-name').value.trim(),partner=$('#lid-partner').value.trim();
+  if(!name){const e=$('#lid-err');e.textContent='Bitte deinen Vornamen eintragen.';e.hidden=false;return;}
+  lsSet('wp-local-id',{name,partner});
+  const me=localPerson({name,partner});const prev=S.me;
+  S.people=[me];S.editId=false;
+  if(!prev){await pick(me.key);return;}
+  if(prev!==me.key){S.me=me.key;lsSet('wp-me',me.key);lsSet('wp-lprops-'+me.key,S.localProps||[]);markChanged();saveDraft();}
+  renderPeople();renderFill();renderLeute();
+}
+
+/* ---------- Events ---------- */
+document.addEventListener('click',async e=>{
+  const b=e.target.closest('[data-action]');if(!b)return;
+  const a=b.dataset.action;
+  if(a==='prop-comment'){
+    const card=document.getElementById('v-'+b.dataset.id);
+    if(card&&S.comments)S.comments.openComposer({element:card}).catch(e=>{const c=e&&e.code;if(c!=='rate_limited'&&c!=='invalid'){S.commentsOff=true;renderLeute();}});
+    return;
+  }
+  if(a==='view'){S.view=b.dataset.view;renderTabs();renderFill();renderLeute();renderEval();window.scrollTo({top:0});return;}
+  if(a==='core'){S.coreOnly=!S.coreOnly;lsSet('wp-core',S.coreOnly);renderFill();return;}
+  if(a==='prop-add'){addProp();return;}
+  if(a==='vote'){castVote(b.dataset.id,b.dataset.val);return;}
+  if(a==='prop-accept-ask'){S.propConfirm={id:b.dataset.id,kind:'accept'};renderLeute();return;}
+  if(a==='prop-withdraw-ask'){S.propConfirm={id:b.dataset.id,kind:'withdraw'};renderLeute();return;}
+  if(a==='prop-cancel'){S.propConfirm=null;renderLeute();return;}
+  if(a==='prop-accept'){acceptProp(b.dataset.id);return;}
+  if(a==='prop-withdraw'){const id=b.dataset.id;S.propConfirm=null;S.db.doc('vorschlaege/'+id).delete().catch(propFail);renderLeute();return;}
+  if(a==='pick'){if(b.dataset.key!==S.me)await pick(b.dataset.key);return;}
+  if(a==='lid-edit'){S.editId=true;renderPeople();const i=$('#lid-name');if(i)i.focus();return;}
+  if(a==='lid-cancel'){S.editId=false;renderPeople();return;}
+  if(a==='lid-save'){saveIdentity();return;}
+  if(a==='lprop-del'){const i=+b.dataset.i;S.localProps=(S.localProps||[]).filter((_,j)=>j!==i);lsSet('wp-lprops-'+S.me,S.localProps);renderLeute();return;}
+  if(a==='imp-assign'){const d=S.importPending;if(d)await saveImport(b.dataset.key,d);return;}
+  if(a==='imp-new'){importNew();return;}
+  if(a==='add-open'){$('#add-person').hidden=false;$('#np-name').focus();return;}
+  if(a==='add-cancel'){$('#add-person').hidden=true;$('#np-err').hidden=true;return;}
+  if(a==='add-save'){addPerson();return;}
+  if(a==='sec'){S.section=+b.dataset.i;renderSecnav();renderSection();window.scrollTo({top:$('#fill-body').offsetTop-12,behavior:'smooth'});return;}
+  if(a==='prev'||a==='next'){
+    if(a==='next'&&S.section===SECTIONS.length-1){S.confirm=true;renderBar();return;}
+    S.section=Math.max(0,Math.min(SECTIONS.length-1,S.section+(a==='next'?1:-1)));renderSecnav();renderSection();
+    window.scrollTo({top:$('#fill-body').offsetTop-12,behavior:'smooth'});return;
+  }
+  if(a==='set'){
+    const key=b.dataset.key;const val=b.dataset.num?Number(b.dataset.val):b.dataset.val;
+    if(S.answers[key]===val)delete S.answers[key];else S.answers[key]=val;
+    b.parentElement.querySelectorAll('[role=radio]').forEach(x=>x.setAttribute('aria-checked',String(S.answers[key]!=null&&String(S.answers[key])===x.dataset.val)));
+    renderSecnav();markChanged();return;
+  }
+  if(a==='toggle'){
+    const key=b.dataset.key,i=Number(b.dataset.val);
+    let arr=Array.isArray(S.answers[key])?S.answers[key].slice():[];
+    arr=arr.includes(i)?arr.filter(x=>x!==i):arr.concat(i).sort((x,y)=>x-y);
+    if(arr.length)S.answers[key]=arr;else delete S.answers[key];
+    b.setAttribute('aria-checked',String(arr.includes(i)));
+    renderSecnav();markChanged();return;
+  }
+  if(a==='submit-ask'){S.confirm=true;renderBar();return;}
+  if(a==='submit-cancel'){S.confirm=null;renderBar();return;}
+  if(a==='submit'){submit();return;}
+  if(a==='copy-export'){copyText($('#export-text').value,$('#export-text'),$('#export-msg'));return;}
+  if(a==='copy-profile'){const ta=$('#profile-text');ta.value=S.profileText;copyText(S.profileText,ta,$('#profile-msg'));return;}
+  if(a==='reveal-ask'){S.revealAsk=true;renderEval();return;}
+  if(a==='reveal-cancel'){S.revealAsk=false;renderEval();return;}
+  if(a==='reveal'){
+    S.revealAsk=false;
+    try{if(S.configExists)await S.db.doc('projekt/config').update({revealed:true});else await S.db.doc('projekt/config').set({participants:S.people,revealed:true});}
+    catch(err){notice('Aufdecken hat nicht geklappt. Vermutlich ist die Seite nur zum Ansehen mit dir geteilt.',true);}
+    renderEval();return;
+  }
+  if(a==='demo-on'){S.demo=true;renderEval();return;}
+  if(a==='demo-off'){S.demo=false;renderEval();return;}
+  if(a==='import'){doImport();return;}
+});
+document.addEventListener('input',e=>{
+  const t=e.target;const a=t.dataset&&t.dataset.action;if(!a)return;
+  if(a==='range'){const v=Number(t.value);S.answers[t.dataset.key]=v;const o=$('#o-'+t.dataset.key);o.textContent=v+' %';o.classList.remove('unset');renderSecnav();markChanged();}
+  else if(a==='text'){const v=t.value;if(v.trim())S.answers[t.dataset.key]=v;else delete S.answers[t.dataset.key];markChanged();}
+  else if(a==='note'){const v=t.value;if(v.trim())S.notes[t.dataset.key]=v;else delete S.notes[t.dataset.key];markChanged();}
+});
+document.addEventListener('keydown',e=>{if(e.key!=='Enter')return;const id=e.target.id;if(id==='np-name'||id==='np-hh'){e.preventDefault();addPerson();}else if(id==='lid-name'||id==='lid-partner'){e.preventDefault();saveIdentity();}});
+window.addEventListener('pagehide',()=>{if(S.saveTimer)saveDraft();});
+
+init();
+})();
+</script>
+
+</body>
+</html>
